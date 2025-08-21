@@ -1,14 +1,14 @@
-import Card from "../core-components/card";
-import Text from "../base-components/text";
 import ButtonIcon from "../base-components/button-icon";
-
+import Icon from "../base-components/icon";
+import Text from "../base-components/text";
+import Card from "../core-components/card";
+import { useStore } from "../hooks/useStore";
 import SearchIcon from "../icons/searchIcon.svg?react";
 
-import lojaVazia from "../objects/lojaVazia.json";
-import mundialACabamentos from "../objects/MundialAcabamentos.json";
-import Icon from "../base-components/icon";
-
 export default function PageComponents() {
+	const store1 = useStore("1");
+	const store2 = useStore("2");
+
 	return (
 		<div className="grid grid-flow-row gap-y-2">
 			<div className="flex flex-col">
@@ -38,23 +38,9 @@ export default function PageComponents() {
 			</div>
 
 			<div className="grid grid-flow-col justify-start gap-2">
-				<Card
-					image={mundialACabamentos.image}
-					name={mundialACabamentos.name}
-					description={mundialACabamentos.description}
-					products={mundialACabamentos.products}
-					services={mundialACabamentos.services}
-					adress={mundialACabamentos.adress}
-				/>
+				<Card store={store1} />
 
-				<Card
-					image={lojaVazia.image}
-					name={lojaVazia.name}
-					description={lojaVazia.description}
-					products={lojaVazia.products}
-					services={lojaVazia.services}
-					adress={lojaVazia.adress}
-				/>
+				<Card store={store2} />
 			</div>
 		</div>
 	);

@@ -1,12 +1,11 @@
-import Card from "../core-components/card";
 import Text from "../base-components/text";
-
-import lojaVazia from "../objects/lojaVazia.json";
-import mundialACabamentos from "../objects/MundialAcabamentos.json";
-import suzanaModas from "../objects/suzanaModas.json";
-import LojaDoSeuZe from "../objects/lojaDoSeuZe.json";
+import Card from "../core-components/card";
+import { useStore } from "../hooks/useStore";
 
 export default function PageHome() {
+	const store1 = useStore("2");
+	const store2 = useStore("3");
+	const store3 = useStore("4");
 
 	return (
 		<div
@@ -21,32 +20,11 @@ export default function PageHome() {
 			</div>
 
 			<div className="flex flex-wrap gap-4">
-				<Card
-					image={mundialACabamentos.image}
-					name={mundialACabamentos.name}
-					description={mundialACabamentos.description}
-					products={mundialACabamentos.products}
-					services={mundialACabamentos.services}
-					adress={mundialACabamentos.adress}
-				/>
+				<Card store={store1} />
 
-				<Card
-					image={suzanaModas.image}
-					name={suzanaModas.name}
-					description={suzanaModas.description}
-					products={suzanaModas.products}
-					services={suzanaModas.services}
-					adress={suzanaModas.adress}
-				/>
+				<Card store={store2} />
 
-				<Card
-					image={LojaDoSeuZe.image}
-					name={LojaDoSeuZe.name}
-					description={LojaDoSeuZe.description}
-					products={LojaDoSeuZe.products}
-					services={LojaDoSeuZe.services}
-					adress={LojaDoSeuZe.adress}
-				/>
+				<Card store={store3} />
 			</div>
 		</div>
 	);

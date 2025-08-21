@@ -2,11 +2,13 @@ import Text from "./text";
 
 export default function SelectDropdown() {
 	return (
-		<div className="
+		<div
+			className="
 		w-20 h-full
 		flex
 		rounded-l-md
-		bg-gray-medium">
+		bg-gray-medium"
+		>
 			<select
 				name="search-bar-type"
 				id="sem id ainda"

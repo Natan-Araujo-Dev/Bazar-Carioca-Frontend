@@ -15,6 +15,7 @@ export const buttonIconVariants = cva(
 				red: "hover:bg-red-vivid",
 				green: "hover:bg-green-vivid",
 				blue: "hover:bg-blue-vivid",
+				white: "hover:bg-cyan-900",
 			},
 			size: {
 				squareBlank: "aspect-square",
@@ -42,6 +43,7 @@ export const ButtonIconIconVariants = cva(`transition p-0.5`, {
 			red: "fill-red-vivid hover:fill-black",
 			green: "fill-green-vivid hover:fill-black",
 			blue: "fill-blue-vivid hover:fill-black",
+			white: "fill-white",
 		},
 		size: {
 			squareBlank: "aspect-square w-full h-full",

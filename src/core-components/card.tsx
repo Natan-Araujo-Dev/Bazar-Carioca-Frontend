@@ -1,7 +1,9 @@
-import React from "react";
-import { type VariantProps, cva } from "class-variance-authority";
-
+import { cva, type VariantProps } from "class-variance-authority";
+import type React from "react";
+import { NavLink } from "react-router";
+import imageNotFound from "../assets/Image-not-found.png";
 import Text from "../base-components/text";
+import type Store from "../objects/store";
 
 export const cardVariants = cva(``, {
 	variants: {
@@ -18,25 +20,15 @@ interface CardProps
 	extends VariantProps<typeof cardVariants>,
 		React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;
-	image?: string;
-	name: string;
-	description: string;
-	products: string;
-	services: string;
-	adress: string;
+	store?: Store | null;
 }
 
-export default function Card({
-	image,
-	name,
-	description,
-	products,
-	services,
-	adress,
-}: CardProps) {
+export default function Card({ store }: CardProps) {
+	if (!store) return null;
+
 	return (
-		<div
-			//alterar isso pra cva
+		<NavLink
+			to={`/lojas/${store.id}`}
 			className="
 			w-100 h-60
 			rounded-xl
@@ -47,23 +39,27 @@ export default function Card({
 		>
 			{/* Imagem na esquerda // editar */}
 			<div className="flex w-1/2 p-4 justify-center">
-				{image && (
+				{store?.imageUrl ? (
 					<img
 						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
-						src={image}
-						alt={name}
+						src={store?.imageUrl}
+						alt={store?.name}
+					/>
+				) : (
+					<img
+						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						src={imageNotFound}
+						alt={store?.name}
 					/>
 				)}
 			</div>
 
 			{/* Textos na direita */}
 			<div className="w-1/2 p-4 flex flex-col justify-between">
-				<Text variant="inter-lg">{name}</Text>
-				<Text variant="inter-md">{description}</Text>
-				<Text variant="inter-md">{products}</Text>
-				<Text variant="inter-md">{services}</Text>
-				<Text variant="inter-sm">{adress}</Text>
+				<Text variant="inter-lg">{store?.name}</Text>
+				<Text variant="inter-md">{store?.description}</Text>
+				<Text variant="inter-sm">{`${store?.street}, ${store?.number} - ${store?.neighborhood}`}</Text>
 			</div>
-		</div>
+		</NavLink>
 	);
 }

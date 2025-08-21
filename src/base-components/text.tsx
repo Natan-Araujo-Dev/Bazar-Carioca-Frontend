@@ -1,5 +1,5 @@
-import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
 
 export const textVariants = cva("", {
 	variants: {
@@ -13,6 +13,7 @@ export const textVariants = cva("", {
 			"inter-hypertext": "text-[12px] text-blue-hypertext underline",
 
 			"zilla-lg": "text-3xl font-zilla-slab",
+			"zilla-md": "text-[18px] font-zilla-slab",
 		},
 	},
 	defaultVariants: {

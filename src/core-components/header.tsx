@@ -1,10 +1,6 @@
-import React from "react";
-import { type VariantProps, cva } from "class-variance-authority";
-
+import { NavLink } from "react-router";
 import Text from "../base-components/text";
 import SearchBar from "./search-bar";
-import SelectDropdown from "../base-components/select-dropdown";
-import { NavLink } from "react-router";
 
 export default function Header() {
 	return (
