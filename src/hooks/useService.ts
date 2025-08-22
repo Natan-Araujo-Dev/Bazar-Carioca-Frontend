@@ -54,7 +54,7 @@ export function getById(id: string) {
 	return service;
 }
 
-export function getByStoreId(id: string) {
+export function getByStoreId(id?: string) {
 	const [services, setServices] = useState<Service[] | null>(null);
 
 	useEffect(() => {
