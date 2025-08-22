@@ -9,6 +9,9 @@ interface StoreInfoProps extends React.ComponentProps<"div"> {
 
 export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 	if (!store) return null;
+	if (isEditing) {
+		console.log("editando");
+	}
 
 	return (
 		<div className="flex flex-row gap-x-4">

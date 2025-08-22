@@ -4,7 +4,7 @@ import StoreInfo from "../core-components/store-info";
 import { getByStoreId } from "../hooks/useService";
 import { useStore } from "../hooks/useStore";
 
-export default function PageLoja() {
+export default function PageStore() {
 	const { id } = useParams<{ id: string }>();
 	const store = useStore(id);
 	const services = getByStoreId(id);
