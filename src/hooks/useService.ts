@@ -27,7 +27,7 @@ export function getAll() {
 	return services;
 }
 
-export function getById(id: string) {
+export function getById(id?: string) {
 	const [service, setService] = useState<Service | null>(null);
 
 	useEffect(() => {
