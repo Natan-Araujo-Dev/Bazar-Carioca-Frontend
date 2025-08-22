@@ -9,14 +9,12 @@ export default function PageStore() {
 	const store = useStore(id);
 	const services = getByStoreId(id);
 
-	console.log(services);
-
 	if (!store) {
 		return <div className="p-4 text-gray-600">Nenhuma loja encontrada.</div>;
 	}
 
 	if (!services) {
-		return null;
+		console.log("nenhum serviço");
 	}
 
 	return (
