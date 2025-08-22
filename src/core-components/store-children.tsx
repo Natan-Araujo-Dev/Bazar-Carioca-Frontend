@@ -37,7 +37,10 @@ export default function StoreChildren({
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">
-					<table className="custom-table">
+					{!services ? (
+						<div><Text variant="inter-md">Nenhum serviço encontrado</Text></div>
+					) : (
+						<table className="custom-table">
 						<thead>
 							<tr>
 								<th className="text-left py-2 px-2">Nome</th>
@@ -54,6 +57,7 @@ export default function StoreChildren({
 							))}
 						</tbody>
 					</table>
+					)}
 				</div>
 			</div>
 		</div>
