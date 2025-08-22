@@ -15,10 +15,6 @@ export default function PageLoja() {
 		return <div className="p-4 text-gray-600">Nenhuma loja encontrada.</div>;
 	}
 
-	if (!services) {
-		return null;
-	}
-
 	return (
 		<div className="flex flex-col gap-y-4">
 			<StoreInfo store={store} isEditing={false} />
