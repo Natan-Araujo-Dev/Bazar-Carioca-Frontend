@@ -27,7 +27,7 @@ export function getAll() {
 	return services;
 }
 
-export function getById(id: string) {
+export function getById(id?: string) {
 	const [service, setService] = useState<Service | null>(null);
 
 	useEffect(() => {
@@ -54,7 +54,7 @@ export function getById(id: string) {
 	return service;
 }
 
-export function getByStoreId(id: string) {
+export function getByStoreId(id?: string) {
 	const [services, setServices] = useState<Service[] | null>(null);
 
 	useEffect(() => {
