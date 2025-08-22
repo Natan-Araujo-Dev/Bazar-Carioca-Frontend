@@ -1,72 +1,29 @@
 import { useParams } from "react-router-dom";
-import Text from "../base-components/text";
+import StoreChildren from "../core-components/store-children";
+import StoreInfo from "../core-components/store-info";
+import { getByStoreId } from "../hooks/useService";
 import { useStore } from "../hooks/useStore";
 
 export default function PageLoja() {
 	const { id } = useParams<{ id: string }>();
 	const store = useStore(id);
+	const services = getByStoreId(id);
+
+	console.log(services);
 
 	if (!store) {
 		return <div className="p-4 text-gray-600">Nenhuma loja encontrada.</div>;
 	}
 
+	if (!services) {
+		return null;
+	}
+
 	return (
 		<div className="flex flex-col gap-y-4">
-			<div className="flex flex-row gap-x-4">
-				<div className="flex border-3 rounded-sm max-h-70 max-w-70 justify-center items-center">
-					<img
-						className="object-contain self-center max-w-full max-h-full"
-						src={store.imageUrl}
-						alt={"teste"}
-					/>
-				</div>
+			<StoreInfo store={store} isEditing={false} />
 
-				<div className="flex flex-col justify-between gap-y-2">
-					<div className="flex flex-col">
-						<div>
-							<Text variant="inter-lg">{store.name}</Text>
-						</div>
-
-						<div>
-							<Text className="text-blue-medium">
-								Horário de funcionamento: de {store.openingTime?.slice(0, -3)}{" "}
-								até {store.closingTime?.slice(0, -3)}
-							</Text>
-						</div>
-					</div>
-
-					<div className="flex flex-row h-full gap-x-4">
-						<div className="flex max-w-50 items-end">
-							<Text>{store.description}</Text>
-						</div>
-
-						<div className="flex flex-col justify-between">
-							<div className="flex max-w-50">
-								<Text className="text-[10px]">
-									<Text className="text-[15px]">Endereço:</Text>
-									<br />
-									{store.street}, {store.number} - {store.neighborhood}, Rio de
-									Janeiro - RJ
-								</Text>
-							</div>
-							<div className="flex items-center">
-								<Text className="text-[10px]">
-									<Text className="text-[15px]">Celular:</Text>
-									<br /> 21 98765-4321
-								</Text>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div>
-				<span>
-					--- Serviços
-					<br />
-					--- Tipos de produtos
-				</span>
-			</div>
+			<StoreChildren services={services} isEditing={false} />
 		</div>
 	);
 }

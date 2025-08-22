@@ -25,7 +25,7 @@ export default function Header() {
 
 			<div className="flex space-x-15 mr-5">
 				<div>
-					<NavLink to="/create">
+					<NavLink to="/criar">
 						<Text variant="inter-header-selectable">Criar conta</Text>
 					</NavLink>
 				</div>

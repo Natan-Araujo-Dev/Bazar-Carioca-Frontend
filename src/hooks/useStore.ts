@@ -10,10 +10,16 @@ export function useStore(id?: string) {
 
 		const controller = new AbortController();
 
-		api
-			.get<Store>(`/lojas/${id}`, { signal: controller.signal })
-			.then((res) => setStore(res.data))
-			.catch(() => setStore(null));
+		const fetchStore = async () => {
+			try {
+				const res = await api.get<Store>(`/lojas/${id}`, { signal: controller.signal });
+				setStore(res.data);
+			} catch {
+				setStore(null);
+			}
+		};
+
+		fetchStore();
 
 		return () => controller.abort();
 	}, [id]);
