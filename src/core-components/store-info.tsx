@@ -50,8 +50,8 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 						</div>
 						<div className="flex items-center">
 							<Text className="text-[10px]">
-								<Text className="text-[15px]">Celular:</Text>
-								<br /> 21 98765-4321
+								<Text className="text-[15px]">Celular:</Text> <br />
+								21 {store.cellphoneNumber}
 							</Text>
 						</div>
 					</div>

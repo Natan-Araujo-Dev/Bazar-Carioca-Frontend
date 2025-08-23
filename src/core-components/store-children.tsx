@@ -49,7 +49,7 @@ export default function StoreChildren({
 								{services?.map((service) => (
 									<tr key={service.id}>
 										<td className="py-2 px-2">{service.name}</td>
-										<td className="py-2 px-2">{service.averagePrice}</td>
+										<td className="py-2 px-2">R$ {service.averagePrice}</td>
 									</tr>
 								))}
 							</tbody>
