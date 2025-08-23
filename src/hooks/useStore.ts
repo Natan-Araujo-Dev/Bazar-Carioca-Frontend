@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import type Store from "../objects/store";
 
-export function useStore(id?: string) {
+export function getStores(id?: string) {
 	const [store, setStore] = useState<Store | null>(null);
 
 	useEffect(() => {
@@ -12,7 +12,9 @@ export function useStore(id?: string) {
 
 		const fetchStore = async () => {
 			try {
-				const res = await api.get<Store>(`/lojas/${id}`, { signal: controller.signal });
+				const res = await api.get<Store>(`/lojas/${id}`, {
+					signal: controller.signal,
+				});
 				setStore(res.data);
 			} catch {
 				setStore(null);

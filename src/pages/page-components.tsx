@@ -2,12 +2,12 @@ import ButtonIcon from "../base-components/button-icon";
 import Icon from "../base-components/icon";
 import Text from "../base-components/text";
 import Card from "../core-components/card";
-import { useStore } from "../hooks/useStore";
+import { getStores } from "../hooks/useStore";
 import SearchIcon from "../icons/searchIcon.svg?react";
 
 export default function PageComponents() {
-	const store1 = useStore("1");
-	const store2 = useStore("2");
+	const store1 = getStores("1");
+	const store2 = getStores("2");
 
 	return (
 		<div className="grid grid-flow-row gap-y-2">

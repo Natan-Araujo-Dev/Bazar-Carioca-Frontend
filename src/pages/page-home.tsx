@@ -1,11 +1,11 @@
 import Text from "../base-components/text";
 import Card from "../core-components/card";
-import { useStore } from "../hooks/useStore";
+import { getStores } from "../hooks/useStore";
 
 export default function PageHome() {
-	const store1 = useStore("2");
-	const store2 = useStore("3");
-	const store3 = useStore("4");
+	const store1 = getStores("2");
+	const store2 = getStores("3");
+	const store3 = getStores("4");
 
 	return (
 		<div
