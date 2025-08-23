@@ -36,9 +36,6 @@ export default function StoreChildren({
 					{!services ? (
 						<Text variant="inter-md">Nenhum serviço encontrado</Text>
 					) : (
-						{!services ? (
-						<div><Text variant="inter-md">Nenhum serviço encontrado</Text></div>
-					) : (
 						<table className="custom-table">
 							<thead>
 								<tr>
