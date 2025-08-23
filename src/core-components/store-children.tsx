@@ -1,8 +1,8 @@
-import ButtonIcon from "../base-components/button-icon";
 import Text from "../base-components/text";
-import ExpandIcon from "../icons/expandIcon.svg?react";
-import type Service from "../objects/service";
 import type ProductType from "../objects/productType";
+import type Service from "../objects/service";
+import ProductTypesList from "./product-type-list";
+import ServicesList from "./services-list";
 
 interface StoreChildrenProps extends React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;
@@ -17,7 +17,6 @@ export default function StoreChildren({
 	isEditing,
 }: StoreChildrenProps) {
 	if (!isEditing) {
-		console.log("Não estou editando.");
 	}
 
 	return (
@@ -34,27 +33,7 @@ export default function StoreChildren({
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">
-					{!services ? (
-						<Text variant="inter-md">Nenhum serviço encontrado</Text>
-					) : (
-						<table className="custom-table">
-							<thead>
-								<tr>
-									<th className="text-left py-2 px-2">Nome</th>
-									<th className="text-left py-2 px-2">Preço médio</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								{services?.map((service) => (
-									<tr key={service.id}>
-										<td className="py-2 px-2">{service.name}</td>
-										<td className="py-2 px-2">R$ {service.averagePrice}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					)}
+					<ServicesList services={services}/>
 				</div>
 			</div>
 
@@ -70,19 +49,7 @@ export default function StoreChildren({
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">
-					{!productTypes ? (
-						<Text variant="inter-md">Nenhum produto encontrado</Text>
-					) : (
-						<table className="custom-table">
-							<tbody>
-								{productTypes?.map((productType) => (
-									<tr key={productType.id}>
-										<td className="py-2 px-2">{productType.name}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					)}
+					<ProductTypesList productTypes={productTypes} />
 				</div>
 			</div>
 		</div>

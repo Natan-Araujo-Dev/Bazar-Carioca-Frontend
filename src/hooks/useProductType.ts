@@ -56,18 +56,29 @@ export function getProductTypeById(id?: string) {
 	return productType;
 }
 
-export function getProductTypeByStoreId(id?: string) {
+export function getProductTypeByStoreId(id?: string, treated?: boolean) {
 	const [productTypes, setProductTypes] = useState<ProductType[] | null>(null);
 
 	useEffect(() => {
-		if (!id) return;
+		if (!id || !treated) return;
 
 		const controller = new AbortController();
 
+		interface ProductTypeQueryParams {
+			Id: string;
+			treated?: boolean;
+		}
+
 		const fetchServices = async () => {
 			try {
-				const res = await api.get<ProductType[]>(`${entityRoute}/loja/${id}`, {
+				const params: ProductTypeQueryParams = {
+					Id: id,
+					treated: treated,
+				};
+
+				const res = await api.get<ProductType[]>(`${entityRoute}/loja`, {
 					signal: controller.signal,
+					params,
 				});
 				setProductTypes(res.data);
 			} catch {
@@ -78,7 +89,7 @@ export function getProductTypeByStoreId(id?: string) {
 		fetchServices();
 
 		return () => controller.abort();
-	}, [id]);
+	}, [id, treated]);
 
 	return productTypes;
 }

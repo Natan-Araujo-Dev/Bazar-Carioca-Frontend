@@ -1,5 +1,5 @@
 export default interface Store {
-	id: boolean;
+	id: number;
 	shopkeeperId: number;
 	name?: string;
 	description?: string;

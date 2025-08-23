@@ -58,4 +58,8 @@ body {
   .custom-table th:not(:first-child) {
     @apply border-gray-300 border-l-2;
   }
+
+  .children-row {
+    @apply flex my-3 justify-between bg-blue-light rounded-sm px-3 py-1;
+  }
 }
