@@ -18,7 +18,7 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 
 function DesktopStoreInfo({ store, isEditing }: StoreInfoProps) {
 	if (isEditing) {
-		console.log("editando");
+		
 	}
 
 	return (
@@ -31,7 +31,7 @@ function DesktopStoreInfo({ store, isEditing }: StoreInfoProps) {
 				rounded-sm "
 			>
 				<img
-					className="flex object-cover w-full h-full"
+					className="flex object-cover w-full h-full rounded-md"
 					src={store.imageUrl}
 					alt={store.name}
 				/>
@@ -80,7 +80,7 @@ function DesktopStoreInfo({ store, isEditing }: StoreInfoProps) {
 
 function MobileStoreInfo({ store, isEditing }: StoreInfoProps) {
 	if (isEditing) {
-		console.log("editando");
+		
 	}
 
 	return (
@@ -103,7 +103,7 @@ function MobileStoreInfo({ store, isEditing }: StoreInfoProps) {
 					rounded-sm"
 				>
 					<img
-						className="flex object-cover w-full h-full"
+						className="flex object-cover w-full h-full rounded-md"
 						src={store.imageUrl}
 						alt={store.name}
 					/>

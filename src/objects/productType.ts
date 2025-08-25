@@ -2,7 +2,7 @@ import type Product from "./product";
 
 export default interface productType {
 	id: number;
-	storeId?: number | null;
+	storeId?: number;
 	name: string;
-	products: Product;
+	products: Product[];
 }

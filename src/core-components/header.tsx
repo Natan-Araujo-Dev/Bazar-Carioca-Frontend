@@ -1,4 +1,6 @@
 import { NavLink } from "react-router";
+import CreateAccount from "../base-components/create-account";
+import Login from "../base-components/login.tsx";
 import Text from "../base-components/text";
 import SearchBar from "./search-bar";
 
@@ -33,17 +35,9 @@ function DesktopHeader() {
 			<SearchBar variant="desktop" />
 
 			<div className="flex space-x-10">
-				<div>
-					<NavLink to="/criar" className="flex h-full w-20 items-center">
-						<Text variant="inter-header-selectable">Criar conta</Text>
-					</NavLink>
-				</div>
+				<CreateAccount />
 
-				<div>
-					<NavLink to="/login" className="flex h-full w-20 items-center">
-						<Text variant="inter-header-selectable">Fazer login</Text>
-					</NavLink>
-				</div>
+				<Login />
 			</div>
 		</div>
 	);
@@ -69,18 +63,10 @@ function MobileHeader() {
 					</NavLink>
 				</div>
 
-				<div className="flex space-x-15 mr-5">
-					<div>
-						<NavLink to="/criar">
-							<Text variant="inter-header-selectable">Criar conta</Text>
-						</NavLink>
-					</div>
+				<div className="flex flex-col justify-evenly h-full">
+					<CreateAccount />
 
-					<div>
-						<NavLink to="/login">
-							<Text variant="inter-header-selectable">Fazer login</Text>
-						</NavLink>
-					</div>
+					<Login />
 				</div>
 			</div>
 

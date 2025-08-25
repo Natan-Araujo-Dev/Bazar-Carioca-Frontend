@@ -1,6 +1,6 @@
-export default interface Store {
+export default interface Service {
 	id: number;
-	storeId?: number | null;
+	storeId?: number;
 	name: string;
 	averagePrice: number;
 }

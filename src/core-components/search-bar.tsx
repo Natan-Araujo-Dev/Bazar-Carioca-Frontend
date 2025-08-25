@@ -3,6 +3,7 @@ import React from "react";
 import BarInputfield from "../base-components/bar-inputfield";
 import ButtonIcon from "../base-components/button-icon";
 import SelectDropdown from "../base-components/select-dropdown";
+import { useSearchContext } from "../contexts/SearchContext";
 import searchIcon from "../icons/searchIcon.svg?react";
 
 export const searchBarVariants = cva(
@@ -15,7 +16,7 @@ export const searchBarVariants = cva(
 	{
 		variants: {
 			variant: {
-				desktop: "w-full max-w-150",
+				desktop: "w-full",
 				mobile: "w-full",
 			},
 		},
@@ -36,6 +37,10 @@ export default function SearchBar({
 	className,
 	...props
 }: SearchBarProps) {
+	const { result } = useSearchContext();
+
+	console.log(result)
+
 	return React.createElement(
 		as,
 		{
@@ -49,6 +54,7 @@ export default function SearchBar({
 
 			{/*Tenho que fazer o button icon*/}
 			<ButtonIcon
+				//onClick={debugar}
 				icon={searchIcon}
 				variant="gray"
 				size="none"

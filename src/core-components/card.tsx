@@ -52,13 +52,14 @@ function DesktopCard({ store }: CardProps) {
 			<div className="flex w-1/2 p-4 justify-center">
 				{store?.imageUrl ? (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="flex object-cover self-center max-w-full max-h-full rounded-md"
 						src={store?.imageUrl}
 						alt={store?.name}
 					/>
+					/* flex object-cover w-full h-full */
 				) : (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
 						src={imageNotFound}
 						alt={store?.name}
 					/>
@@ -98,13 +99,13 @@ function MobileCard({ store }: CardProps) {
 			<div className="flex p-4 justify-center">
 				{store?.imageUrl ? (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
 						src={store?.imageUrl}
 						alt={store?.name}
 					/>
 				) : (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
 						src={imageNotFound}
 						alt={store?.name}
 					/>
