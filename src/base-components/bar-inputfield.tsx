@@ -39,7 +39,6 @@ export default function BarInputfield({
 			<input
 				type="search"
 				value={term}
-				onBlur={() => setTerm("")}
 				onChange={(e) => setTerm(e.target.value)}
 				placeholder="Buscar..."
 				className="h-full w-full px-2 bg-gray-light"
