@@ -3,7 +3,9 @@ import Text from "../base-components/text";
 import SearchBar from "./search-bar";
 
 export default function Header() {
-	if (window.innerWidth < 720) {
+	const windowWidth = window.innerWidth;
+
+	if (windowWidth < 720) {
 		return <MobileHeader />;
 	}
 	return <DesktopHeader />;
