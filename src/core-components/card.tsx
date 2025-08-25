@@ -26,6 +26,18 @@ interface CardProps
 export default function Card({ store }: CardProps) {
 	if (!store) return null;
 
+	const windowWidth = window.innerWidth;
+
+	if (windowWidth < 720) {
+		return <MobileCard store={store} />;
+	}
+
+	return <DesktopCard store={store} />;
+}
+
+function DesktopCard({ store }: CardProps) {
+	if (!store) return null;
+
 	return (
 		<NavLink
 			to={`/lojas/${store.id}`}
@@ -37,17 +49,17 @@ export default function Card({ store }: CardProps) {
 			shadow-sm
 			"
 		>
-			{/* Imagem na esquerda // editar */}
 			<div className="flex w-1/2 p-4 justify-center">
 				{store?.imageUrl ? (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="flex object-cover self-center max-w-full max-h-full rounded-md"
 						src={store?.imageUrl}
 						alt={store?.name}
 					/>
+					/* flex object-cover w-full h-full */
 				) : (
 					<img
-						className="object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
 						src={imageNotFound}
 						alt={store?.name}
 					/>
@@ -58,6 +70,53 @@ export default function Card({ store }: CardProps) {
 			<div className="w-1/2 p-4 flex flex-col justify-between">
 				<Text variant="inter-lg">{store?.name}</Text>
 				<Text variant="inter-md">{store?.description}</Text>
+				<Text variant="inter-sm">{`${store?.street}, ${store?.number} - ${store?.neighborhood}`}</Text>
+			</div>
+		</NavLink>
+	);
+}
+
+function MobileCard({ store }: CardProps) {
+	if (!store) return null;
+
+	return (
+		<NavLink
+			to={`/lojas/${store.id}`}
+			className="
+			flex flex-col
+			w-80 h-120
+			rounded-xl
+			bg-blue-extralight
+			shadow-sm
+			justify-between
+			p-4
+			"
+		>
+			<div className="flex justify-center m-4">
+				<Text variant="inter-lg">{store?.name}</Text>
+			</div>
+
+			<div className="flex p-4 justify-center">
+				{store?.imageUrl ? (
+					<img
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
+						src={store?.imageUrl}
+						alt={store?.name}
+					/>
+				) : (
+					<img
+						className="object-cover self-center max-w-1/1 max-h-1/1 rounded-md"
+						src={imageNotFound}
+						alt={store?.name}
+					/>
+				)}
+			</div>
+
+			<div>
+				<Text variant="inter-md">{store?.description}</Text>
+			</div>
+
+			<div>
 				<Text variant="inter-sm">{`${store?.street}, ${store?.number} - ${store?.neighborhood}`}</Text>
 			</div>
 		</NavLink>

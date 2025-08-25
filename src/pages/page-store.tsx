@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import StoreChildren from "../core-components/store-children";
 import StoreInfo from "../core-components/store-info";
-import { getByStoreId } from "../hooks/useService";
-import { useStore } from "../hooks/useStore";
+import { getProductTypeByStoreId } from "../hooks/useProductType";
+import { getServicesByStoreId } from "../hooks/useService";
+import { getStores } from "../hooks/useStore";
 
-export default function PageLoja() {
+export default function PageStore() {
 	const { id } = useParams<{ id: string }>();
-	const store = useStore(id);
-	const services = getByStoreId(id);
-
-	console.log(services);
+	const store = getStores(id);
+	const services = getServicesByStoreId(id);
+	const productTypes = getProductTypeByStoreId(id, true);
 
 	if (!store) {
 		return <div className="p-4 text-gray-600">Nenhuma loja encontrada.</div>;
@@ -19,7 +19,11 @@ export default function PageLoja() {
 		<div className="flex flex-col gap-y-4">
 			<StoreInfo store={store} isEditing={false} />
 
-			<StoreChildren services={services} isEditing={false} />
+			<StoreChildren
+				services={services}
+				productTypes={productTypes}
+				isEditing={false}
+			/>
 		</div>
 	);
 }

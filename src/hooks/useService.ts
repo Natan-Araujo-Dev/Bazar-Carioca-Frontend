@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import type Service from "../objects/service";
 
-export function getAll() {
+export function getServices() {
 	const [services, setServices] = useState<Service[] | null>(null);
 
 	useEffect(() => {
@@ -27,7 +27,7 @@ export function getAll() {
 	return services;
 }
 
-export function getById(id?: string) {
+export function getServiceById(id?: string) {
 	const [service, setService] = useState<Service | null>(null);
 
 	useEffect(() => {
@@ -54,7 +54,7 @@ export function getById(id?: string) {
 	return service;
 }
 
-export function getByStoreId(id?: string) {
+export function getServicesByStoreId(id?: string) {
 	const [services, setServices] = useState<Service[] | null>(null);
 
 	useEffect(() => {

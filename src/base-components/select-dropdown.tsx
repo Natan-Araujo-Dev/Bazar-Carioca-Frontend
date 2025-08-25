@@ -1,6 +1,9 @@
+import { useSearchContext } from "../contexts/SearchContext";
 import Text from "./text";
 
 export default function SelectDropdown() {
+	const { type, setType } = useSearchContext();
+
 	return (
 		<div
 			className="
@@ -11,14 +14,15 @@ export default function SelectDropdown() {
 		>
 			<select
 				name="search-bar-type"
-				id="sem id ainda"
+				value={type}
+				onChange={(e) => setType(e.target.value)}
 				className="
 				w-full h-full
 				text-xs
 				flex justify-center
 				whitespace-normal"
 			>
-				<option value="all">
+				<option value="todos">
 					<Text>Tudo</Text>
 				</option>
 				<option value="lojas">
