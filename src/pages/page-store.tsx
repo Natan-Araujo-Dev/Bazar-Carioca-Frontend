@@ -11,12 +11,6 @@ export default function PageStore() {
 	const services = getServicesByStoreId(id);
 	const productTypes = getProductTypeByStoreId(id, true);
 
-	if (productTypes) {
-		productTypes.forEach((pt) => {
-			console.log(pt.products);
-		});
-	}
-
 	if (!store) {
 		return <div className="p-4 text-gray-600">Nenhuma loja encontrada.</div>;
 	}
