@@ -39,7 +39,7 @@ function DesktopPageHome({ store1, store2, store3 }: PageHomeProps) {
 
 			<div
 				className="
-			flex flex-wrap gap-4"
+				flex flex-wrap gap-4"
 			>
 				<Card store={store1} />
 
@@ -56,24 +56,27 @@ function MobilePageHome({ store1, store2, store3 }: PageHomeProps) {
 		<div
 			className="
 			flex flex-col flex-wrap
-			justify-center
-			items-start
 		 	space-y-25"
 		>
 			<div>
-				MOBILE <br />
 				<Text variant="zilla-lg">Conheça alguma de nossas lojas:</Text>
 			</div>
 
 			<div
 				className="
-			flex flex-col gap-4"
+				flex flex-col items-center gap-4"
 			>
-				<Card store={store1} />
+				<div>
+					<Card store={store1} />
+				</div>
 
-				<Card store={store2} />
+				<div>
+					<Card store={store2} />
+				</div>
 
-				<Card store={store3} />
+				<div>
+					<Card store={store3} />
+				</div>
 			</div>
 		</div>
 	);
