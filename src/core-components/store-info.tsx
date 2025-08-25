@@ -2,13 +2,21 @@ import Text from "../base-components/text";
 import type Store from "../objects/store";
 
 interface StoreInfoProps extends React.ComponentProps<"div"> {
-	as?: keyof React.JSX.IntrinsicElements;
-	store?: Store | null;
+	store: Store;
 	isEditing: boolean;
 }
 
 export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
-	if (!store) return null;
+	const windowWidth = window.innerWidth;
+
+	if (windowWidth < 720) {
+		return <MobileStoreInfo store={store} isEditing={isEditing} />;
+	}
+
+	return <DesktopStoreInfo store={store} isEditing={isEditing} />;
+}
+
+function DesktopStoreInfo({ store, isEditing }: StoreInfoProps) {
 	if (isEditing) {
 		console.log("editando");
 	}
@@ -23,9 +31,9 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 				rounded-sm "
 			>
 				<img
-					className="object-contain self-stretch max-w-full max-h-full"
+					className="flex object-cover w-full h-full"
 					src={store.imageUrl}
-					alt={"teste"}
+					alt={store.name}
 				/>
 			</div>
 
@@ -64,6 +72,62 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 							</Text>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function MobileStoreInfo({ store, isEditing }: StoreInfoProps) {
+	if (isEditing) {
+		console.log("editando");
+	}
+
+	return (
+		<div className="flex flex-col gap-y-4">
+			<div className="flex flex-col gap-y-2">
+				<Text variant="inter-lg">{store.name}</Text>
+
+				<Text className="text-blue-medium">
+					Horário de funcionamento: de {store.openingTime?.slice(0, -3)} até{" "}
+					{store.closingTime?.slice(0, -3)}
+				</Text>
+			</div>
+
+			<div className="flex flex-row gap-x-4 justify-between">
+				<div
+					className="
+					flex w-40 h-40
+					bg-blue-extralight
+					justify-center items-center
+					rounded-sm"
+				>
+					<img
+						className="flex object-cover w-full h-full"
+						src={store.imageUrl}
+						alt={store.name}
+					/>
+				</div>
+
+				<div className="flex w-40 h-40 justify-start items-start">
+					<Text>{store.description}</Text>
+				</div>
+			</div>
+
+			<div className="flex flex-col justify-between gap-y-4">
+				<div className="flex">
+					<Text className="text-[10px]">
+						<Text className="text-[15px]">Endereço:</Text>
+						<br />
+						{store.street}, {store.number} - {store.neighborhood}, Rio de
+						Janeiro - RJ
+					</Text>
+				</div>
+				<div className="flex items-center">
+					<Text className="text-[10px]">
+						<Text className="text-[15px]">Celular:</Text> <br />
+						21 {store.cellphoneNumber}
+					</Text>
 				</div>
 			</div>
 		</div>
