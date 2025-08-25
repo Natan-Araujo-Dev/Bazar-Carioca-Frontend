@@ -39,7 +39,7 @@ export default function StoreChildren({
 
 			<div>
 				<div className="flex flex-row">
-					<Text variant="zilla-lg">Tipos de produtos</Text>
+					<Text variant="zilla-lg">Produtos</Text>
 
 					{/* <ButtonIcon
 						icon={ExpandIcon}
