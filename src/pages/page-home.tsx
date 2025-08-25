@@ -30,7 +30,6 @@ function DesktopPageHome({ store1, store2, store3 }: PageHomeProps) {
 			flex flex-col flex-wrap
 			justify-center
 			items-start
-			mx-4
 		 	space-y-25"
 		>
 			<div>
