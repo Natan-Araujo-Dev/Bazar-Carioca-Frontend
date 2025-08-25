@@ -15,9 +15,15 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 
 	return (
 		<div className="flex flex-row gap-x-4">
-			<div className="flex border-3 rounded-sm max-h-70 max-w-70 justify-center items-center">
+			<div
+				className="
+				flex h-70 w-70
+				bg-blue-extralight
+				justify-center items-center
+				rounded-sm "
+			>
 				<img
-					className="object-contain self-center max-w-full max-h-full"
+					className="object-contain self-stretch max-w-full max-h-full"
 					src={store.imageUrl}
 					alt={"teste"}
 				/>
@@ -38,7 +44,7 @@ export default function StoreInfo({ store, isEditing }: StoreInfoProps) {
 				</div>
 
 				<div className="flex flex-row h-full gap-x-4">
-					<div className="flex max-w-50 items-end">
+					<div className="flex w-50 items-end">
 						<Text>{store.description}</Text>
 					</div>
 

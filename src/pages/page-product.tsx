@@ -15,10 +15,13 @@ export default function PageProduct() {
             <Text className="text-[40px] font-zilla-slab">{product?.name}</Text>
          </div>
 
-         <div className="flex flex-row gap-x-4">
-            <div className="flex w-70 h-70 border-2 rounded-md">
-               <img
-						className="flex object-contain self-center max-w-1/1 max-h-1/1 rounded-md"
+			<div className="flex flex-row gap-x-4">
+				<div className="
+				flex w-70 h-70
+				bg-blue-extralight 
+				rounded-md">
+					<img
+						className="flex object-contain self-stretch max-w-1/1 max-h-1/1"
 						src={product?.imageUrl}
 						alt={product?.name}
 					/>

@@ -6,8 +6,6 @@ export default function PageLogin() {
 			<Text>
 				Ainda vou criar essa página.
 				<br />
-				Calma Calabrezo
-				<br />
 				(Página de login)
 			</Text>
 		</div>

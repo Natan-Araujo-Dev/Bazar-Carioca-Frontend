@@ -32,7 +32,7 @@ export default function Header() {
 
 				<div>
 					<NavLink to="/login">
-						<Text variant="inter-header-selectable">Login</Text>
+						<Text variant="inter-header-selectable">Fazer login</Text>
 					</NavLink>
 				</div>
 			</div>
