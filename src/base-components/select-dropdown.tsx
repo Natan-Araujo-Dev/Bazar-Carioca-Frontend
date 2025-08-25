@@ -31,9 +31,9 @@ export default function SelectDropdown() {
 				<option value="servicos">
 					<Text>Serviços</Text>
 				</option>
-				<option value="tipos-de-produtos">
+				{/* <option value="tipos-de-produtos">
 					<Text>Tipos de produtos</Text>
-				</option>
+				</option> */}
 				<option value="produtos">
 					<Text>Produtos</Text>
 				</option>
