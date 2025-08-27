@@ -16,7 +16,8 @@ export default function SearchResultBox({
 		<div className="absolute z-50">
 			<div
 				className="flex flex-col
-            w-100
+				max-h-80
+				overflow-hidden
             p-1
             bg-white
             border-2 border-black"
