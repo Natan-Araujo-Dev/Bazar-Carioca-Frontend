@@ -11,8 +11,8 @@ interface PageHomeProps extends React.ComponentProps<"div"> {
 
 export default function PageHome() {
 	const store1 = getStores("2");
-	const store2 = getStores("3");
-	const store3 = getStores("4");
+	const store2 = getStores("5");
+	const store3 = getStores("6");
 
 	const widowWidth = window.innerWidth;
 

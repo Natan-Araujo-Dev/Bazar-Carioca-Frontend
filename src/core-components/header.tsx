@@ -24,7 +24,7 @@ function DesktopHeader() {
 			items-center
 			bg-blue-medium"
 		>
-			<div className="m-3">
+			<div className="m-3 expand">
 				<NavLink to="/">
 					<Text variant="zilla-lg">
 						Bazar <br /> Carioca.com

@@ -42,6 +42,7 @@ function DesktopCard({ store }: CardProps) {
 		<NavLink
 			to={`/lojas/${store.id}`}
 			className="
+			expand
 			w-100 h-60
 			rounded-xl
 			bg-blue-extralight

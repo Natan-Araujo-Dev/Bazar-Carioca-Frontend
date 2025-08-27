@@ -21,6 +21,13 @@ export default function ProductTypesList({ productTypes }: productTypeProps) {
 			{productTypes?.map((pt) => (
 				<div key={pt.id}>
 					<ProductTypeRow name={pt.name} />
+
+					{pt.products.length === 0 && (
+						<div className="">
+							<Text>Esse tipo de produto não tem nenhum produto.</Text>
+						</div>
+					)}
+
 					<ProductsList
 						products={Array.isArray(pt.products) ? pt.products : [pt.products]}
 					/>

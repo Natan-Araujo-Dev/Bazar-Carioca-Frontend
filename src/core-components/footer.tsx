@@ -34,10 +34,15 @@ export default function Footer() {
 			</div> */}
 
 			<div>
-				<Text variant="inter-footer">
-					Ficou com dúvida em algo? Nos envie um email! <br />
+				<div>
+					<Text variant="inter-footer">
+						Ficou com dúvida em algo? Nos envie um email!
+					</Text>
+				</div>
+
+				<div className="expand">
 					<a
-						href="https://mail.google.com/mail/u/0/#all?compose=DmwnWtMqhJNvqjnrpSxjVsTCXMFtQZQZfQnBjWlWMTgXGHMFSHCvbStjRKBWCLVQkcXcKhZHxtzG"
+						href="https://mail.google.com/mail/?view=cm&fs=1&to=bazar.carioca.suporte@gmail.com"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -45,7 +50,7 @@ export default function Footer() {
 							bazar.carioca.suporte@gmail.com
 						</Text>
 					</a>
-				</Text>
+				</div>
 			</div>
 		</footer>
 	);

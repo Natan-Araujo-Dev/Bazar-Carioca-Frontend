@@ -9,7 +9,12 @@ interface ProductTypeRowProps extends React.ComponentProps<"div"> {
 
 export default function ProductTypeRow({ product }: ProductTypeRowProps) {
 	return (
-		<NavLink to={`/produtos/${product.id}`} className="children-row">
+		<NavLink
+			to={`/produtos/${product.id}`}
+			className="children-row
+			click-row	
+			"
+		>
 			<div className="flex">
 				<Text>{product.name}</Text>
 			</div>

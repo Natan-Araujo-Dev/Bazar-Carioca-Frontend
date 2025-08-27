@@ -11,7 +11,7 @@ export default function ServicesList({ services }: ServicesListProps) {
 	if (!services)
 		return (
 			<div>
-				<Text variant="inter-md">Nenhum produto encontrado</Text>
+				<Text variant="inter-md">Nenhum serviço encontrado</Text>
 			</div>
 		);
 

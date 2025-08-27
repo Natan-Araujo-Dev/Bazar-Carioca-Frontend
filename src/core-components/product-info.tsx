@@ -30,7 +30,7 @@ function DesktopPageProduct({ product }: ProductInfoProps) {
                rounded-md"
 				>
 					<img
-						className="flex object-contain self-stretch max-w-1/1 max-h-1/1"
+						className="flex object-cover self-stretch max-w-1/1 max-h-1/1 rounded-md"
 						src={product?.imageUrl}
 						alt={product?.name}
 					/>
@@ -42,11 +42,30 @@ function DesktopPageProduct({ product }: ProductInfoProps) {
 							<Text variant="zilla-lg">R$ {product?.price}</Text>
 						</div>
 						<div>
-							<Text variant="zilla-md">Estoque: {product?.stock}</Text>
+							<Text variant="zilla-md">
+								Estoque:
+								{product?.stock === null && (
+									<span>
+										<br />
+										Não informado
+									</span>
+								)}
+								{product?.stock}
+							</Text>
 						</div>
 					</div>
 
-					<div className="flex w-70">{product?.description}</div>
+					<div className="flex w-70">
+						<Text>
+							{product?.description}
+							{product?.stock === null && (
+								<span>
+									<br />
+									Descrição não informada.
+								</span>
+							)}
+						</Text>
+					</div>
 				</div>
 			</div>
 		</div>

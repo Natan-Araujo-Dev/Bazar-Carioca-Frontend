@@ -62,4 +62,12 @@ body {
   .children-row {
     @apply flex my-3 justify-between bg-blue-light rounded-sm px-3 py-1;
   }
+
+  .click-row {
+    @apply scale-98 hover:scale-100 transition duration-150 ease-in-out
+  }
+
+  .expand {
+    @apply scale-95 hover:scale-100 transition duration-150 ease-in-out
+  }
 }

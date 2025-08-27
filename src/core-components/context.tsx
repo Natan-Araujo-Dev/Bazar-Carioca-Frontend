@@ -34,7 +34,7 @@ export default function Header() {
 			<div>
 				<Text variant="zilla-md" className="text-white">
 					{/* automatizar isso */}
-					Loja
+					Inspecionando
 				</Text>
 			</div>
 
