@@ -30,7 +30,7 @@ function DesktopPageProduct({ product }: ProductInfoProps) {
                rounded-md"
 				>
 					<img
-						className="flex object-cover self-stretch w-full h-full rounded-md"
+						className="flex object-cover self-stretch w-full h-full rounded-md shadow-md"
 						src={product?.imageUrl}
 						alt={product?.name}
 					/>
@@ -103,7 +103,7 @@ function MobilePageProduct({ product }: ProductInfoProps) {
                rounded-md"
 			>
 				<img
-					className="flex object-cover self-stretch w-full h-full rounded-md"
+					className="flex object-cover self-stretch w-full h-full rounded-md shadow-md"
 					src={product?.imageUrl}
 					alt={product?.name}
 				/>
