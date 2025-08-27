@@ -1,7 +1,6 @@
-import { NavLink } from "react-router";
+import BazarCariocaButton from "../base-components/bazar-carioca-button.tsx";
 import CreateAccount from "../base-components/create-account";
 import Login from "../base-components/login.tsx";
-import Text from "../base-components/text";
 import SearchBar from "./search-bar";
 
 export default function Header() {
@@ -24,13 +23,7 @@ function DesktopHeader() {
 			items-center
 			bg-blue-medium"
 		>
-			<div className="m-3 expand">
-				<NavLink to="/">
-					<Text variant="zilla-lg">
-						Bazar <br /> Carioca.com
-					</Text>
-				</NavLink>
-			</div>
+			<BazarCariocaButton />
 
 			<SearchBar variant="desktop" />
 
@@ -55,13 +48,7 @@ function MobileHeader() {
 				items-center
 				"
 			>
-				<div className="m-3">
-					<NavLink to="/">
-						<Text variant="zilla-lg">
-							Bazar <br /> Carioca.com
-						</Text>
-					</NavLink>
-				</div>
+				<BazarCariocaButton />
 
 				<div className="flex flex-col justify-evenly h-full">
 					<CreateAccount />
