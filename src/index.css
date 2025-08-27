@@ -36,7 +36,7 @@ body {
 
 @theme {
   --font-zilla-slab: "Zilla Slab";
-  --font-inter: "Inter"
+  --font-inter: "Inter";
 
 }
 
@@ -64,10 +64,10 @@ body {
   }
 
   .click-row {
-    @apply scale-98 hover:scale-100 transition duration-150 ease-in-out
+    @apply scale-98 hover:scale-100 transition duration-150 ease-in-out;
   }
 
   .expand {
-    @apply scale-95 hover:scale-100 transition duration-150 ease-in-out
+    @apply scale-95 hover:scale-100 transition duration-150 ease-in-out;
   }
 }

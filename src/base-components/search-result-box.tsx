@@ -13,7 +13,7 @@ export default function SearchResultBox({
 	}
 
 	return (
-		<div className="absolute">
+		<div className="absolute z-50">
 			<div
 				className="flex flex-col
             w-100
