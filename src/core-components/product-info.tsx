@@ -37,32 +37,32 @@ function DesktopPageProduct({ product }: ProductInfoProps) {
 				</div>
 
 				<div className="flex flex-col max-w-120 justify-between">
-					<div className="flex flex-row justify-between">
+					<div className="flex flex-row justify-between gap-x-40">
 						<div>
 							<Text variant="zilla-lg">R$ {product?.price}</Text>
 						</div>
+
 						<div>
-							<Text variant="zilla-md">
-								Estoque:
-								{product?.stock === null && (
-									<span>
+							<Text variant="zilla-lg">
+								Estoque:{" "}
+								{!product?.stock ? (
+									<Text variant="zilla-md">
 										<br />
 										Não informado
-									</span>
+									</Text>
+								) : (
+									<span>{product.stock}</span>
 								)}
-								{product?.stock}
 							</Text>
 						</div>
 					</div>
 
 					<div className="flex w-70">
 						<Text>
-							{product?.description}
-							{product?.description === null && (
-								<span>
-									<br />
-									Descrição não informada.
-								</span>
+							{!product?.description ? (
+								<span>Descrição não informada.</span>
+							) : (
+								<span>{product?.description}</span>
 							)}
 						</Text>
 					</div>
@@ -85,11 +85,14 @@ function MobilePageProduct({ product }: ProductInfoProps) {
 				</div>
 
 				<div>
-					{!product?.stock ? (
-						<Text variant="zilla-md">Estoque: Não informado</Text>
-					) : (
-						<Text variant="zilla-md">Estoque: {product?.stock}</Text>
-					)}
+					<Text variant="zilla-md">
+						Estoque:{" "}
+						{!product?.stock ? (
+							<span>Não informado</span>
+						) : (
+							<span>{product.stock}</span>
+						)}
+					</Text>
 				</div>
 			</div>
 
@@ -107,11 +110,13 @@ function MobilePageProduct({ product }: ProductInfoProps) {
 			</div>
 
 			<div className="flex w-70">
-				{!product?.stock ? (
-					<Text variant="zilla-md">Descrição não informada</Text>
-				) : (
-					<Text variant="zilla-md">{product?.description}</Text>
-				)}
+				<Text>
+					{!product?.description ? (
+						<span>Descrição não informada.</span>
+					) : (
+						<span>{product?.description}</span>
+					)}
+				</Text>
 			</div>
 		</div>
 	);
