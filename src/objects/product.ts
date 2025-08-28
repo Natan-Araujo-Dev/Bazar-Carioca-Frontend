@@ -1,4 +1,4 @@
-export default interface Store {
+export default interface Product {
 	id: number;
 	productTypeId: number;
 	name: string;

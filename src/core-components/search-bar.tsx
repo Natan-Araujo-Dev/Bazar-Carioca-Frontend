@@ -3,7 +3,6 @@ import React from "react";
 import BarInputfield from "../base-components/bar-inputfield";
 import ButtonIcon from "../base-components/button-icon";
 import SelectDropdown from "../base-components/select-dropdown";
-import { useSearchContext } from "../contexts/SearchContext";
 import searchIcon from "../icons/searchIcon.svg?react";
 
 export const searchBarVariants = cva(
@@ -37,9 +36,7 @@ export default function SearchBar({
 	className,
 	...props
 }: SearchBarProps) {
-	const { result } = useSearchContext();
 
-	console.log(result)
 
 	return React.createElement(
 		as,

@@ -1,6 +1,6 @@
 import type React from "react";
 import { createContext, useContext, useState } from "react";
-import { useSearch } from "../hooks/useSearch";
+import { useSearch } from "../hooks/getSearch";
 import type SearchResult from "../objects/searchResult";
 
 interface SearchContextType {

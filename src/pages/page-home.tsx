@@ -1,6 +1,6 @@
 import Text from "../base-components/text";
 import Card from "../core-components/card";
-import { getStores } from "../hooks/useStore";
+import { getStores } from "../hooks/getStore";
 import type Store from "../objects/store";
 
 interface PageHomeProps extends React.ComponentProps<"div"> {

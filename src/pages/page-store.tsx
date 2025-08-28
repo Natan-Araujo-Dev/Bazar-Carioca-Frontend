@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import StoreChildren from "../core-components/store-children";
 import StoreInfo from "../core-components/store-info";
-import { getProductTypeByStoreId } from "../hooks/useProductType";
-import { getServicesByStoreId } from "../hooks/useService";
-import { getStores } from "../hooks/useStore";
+import { getProductTypeByStoreId } from "../hooks/getProductType";
+import { getServicesByStoreId } from "../hooks/getService";
+import { getStores } from "../hooks/getStore";
 
 export default function PageStore() {
 	const { id } = useParams<{ id: string }>();
