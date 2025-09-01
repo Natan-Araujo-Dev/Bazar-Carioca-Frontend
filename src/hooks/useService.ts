@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import type Service from "../objects/service";
+import type Service from "../models/service";
 
 export function getServices() {
 	const [services, setServices] = useState<Service[] | null>(null);

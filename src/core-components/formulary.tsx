@@ -5,12 +5,9 @@ import ButtonText from "../base-components/button-text";
 import ErrorMessage from "../base-components/error-message";
 import FormularyHeader from "../base-components/formulary-header";
 import InputField from "../base-components/input-field";
-import { useInfoContext } from "../contexts/infoContext";
 import type ShopkeeperCreateDTO from "../models/DTOs/shopkeeperCreateDTO";
 
-export default function PageCreate() {
-	const { setInfo } = useInfoContext();
-	setInfo("Criar conta");
+export default function PageLogin() {
 	const [shopkeeperDto, setShopkeeperDTO] = useState<ShopkeeperCreateDTO>({
 		Name: "",
 		Email: "",
@@ -80,8 +77,6 @@ export default function PageCreate() {
 
 							await createAspNetUser(shopkeeperDto);
 							await addUserToShopkeeper(shopkeeperDto);
-
-							// Ir para login ou lojas do lojista direto.
 						}}
 					/>
 				</div>

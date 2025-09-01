@@ -1,7 +1,7 @@
 import Text from "../base-components/text";
 import Card from "../core-components/card";
-import { getStores } from "../hooks/getStore";
-import type Store from "../objects/store";
+import { getStores } from "../hooks/useStore";
+import type Store from "../models/store";
 
 interface PageHomeProps extends React.ComponentProps<"div"> {
 	store1?: Store | null;

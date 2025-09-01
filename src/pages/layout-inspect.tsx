@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Context from "../core-components/context";
+import Context from "../core-components/infoSubheader";
 import Footer from "../core-components/footer";
 import Header from "../core-components/header";
 

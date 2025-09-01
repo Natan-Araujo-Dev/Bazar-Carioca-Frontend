@@ -1,6 +1,6 @@
 import Text from "../base-components/text";
-import type ProductType from "../objects/productType";
-import type Service from "../objects/service";
+import type ProductType from "../models/productType";
+import type Service from "../models/service";
 import ProductTypesList from "./product-type-list";
 import ServicesList from "./services-list";
 

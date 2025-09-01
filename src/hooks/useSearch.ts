@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import type SearchResult from "../objects/searchResult";
+import type SearchResult from "../models/searchResultDTO";
 
 const entityRoute = "/Busca";
 

@@ -50,7 +50,7 @@ function MobileHeader() {
 			>
 				<BazarCariocaButton />
 
-				<div className="flex flex-col justify-evenly h-full">
+				<div className="flex flex-col justify-evenly items-end h-full">
 					<CreateAccount />
 
 					<Login />

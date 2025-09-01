@@ -13,13 +13,13 @@ export default function App() {
 			<Routes>
 				<Route element={<LayoutMain />}>
 					<Route index element={<PageHome />} />
-
-					<Route path="/criar" element={<PageCreate />} />
-
-					<Route path="/login" element={<PageLogin />} />
 				</Route>
 
 				<Route element={<LayoutInspect />}>
+					<Route path="/criar" element={<PageCreate />} />
+
+					<Route path="/login" element={<PageLogin />} />
+
 					<Route path="/lojas/:id" element={<PageStore />} />
 
 					<Route path="/produtos/:id" element={<PageProduct />} />

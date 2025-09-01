@@ -1,5 +1,5 @@
 import Text from "../base-components/text";
-import type Store from "../objects/store";
+import type Store from "../models/store";
 
 interface StoreInfoProps extends React.ComponentProps<"div"> {
 	store: Store;

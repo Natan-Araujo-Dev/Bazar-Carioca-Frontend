@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import type Product from "../objects/product";
+import type Product from "../models/product";
 
 const entityRoute = "/produtos";
 

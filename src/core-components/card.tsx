@@ -3,7 +3,7 @@ import type React from "react";
 import { NavLink } from "react-router";
 import imageNotFound from "../assets/Image-not-found.png";
 import Text from "../base-components/text";
-import type Store from "../objects/store";
+import type Store from "../models/store";
 
 export const cardVariants = cva(``, {
 	variants: {

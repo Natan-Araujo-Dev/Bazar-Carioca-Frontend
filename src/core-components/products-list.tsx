@@ -1,7 +1,7 @@
 import type React from "react";
 import ProductRow from "../base-components/product-row";
 import Text from "../base-components/text";
-import type Product from "../objects/product";
+import type Product from "../models/product";
 
 interface ProductRowProps extends React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;

@@ -1,5 +1,5 @@
 import Text from "../base-components/text";
-import type product from "../objects/product";
+import type product from "../models/product";
 
 interface ProductInfoProps extends React.ComponentProps<"div"> {
 	product?: product | null;

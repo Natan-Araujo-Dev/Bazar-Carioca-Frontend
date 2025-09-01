@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
-import type Store from "../objects/store";
+import type Store from "../models/store";
 
 export function getStores(id?: string) {
 	const [store, setStore] = useState<Store | null>(null);

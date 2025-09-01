@@ -4,8 +4,8 @@ import Text from "./text";
 export default function CreateAccount() {
 	return (
 		<div>
-			<NavLink to="/login" className="expand flex h-full w-20 justify-center items-center">
-				<Text variant="inter-header-selectable">Fazer login</Text>
+			<NavLink to="/login" className="expand flex h-full p-2 justify-center items-center">
+				<Text variant="inter-header-selectable">Entrar</Text>
 			</NavLink>
 		</div>
 	);

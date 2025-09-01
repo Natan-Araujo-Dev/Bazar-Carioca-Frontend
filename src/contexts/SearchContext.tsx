@@ -1,7 +1,7 @@
 import type React from "react";
 import { createContext, useContext, useState } from "react";
-import { useSearch } from "../hooks/getSearch";
-import type SearchResult from "../objects/searchResult";
+import { useSearch } from "../hooks/useSearch";
+import type SearchResult from "../models/searchResultDTO";
 
 interface SearchContextType {
 	term: string;

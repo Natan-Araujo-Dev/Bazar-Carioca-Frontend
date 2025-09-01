@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import ButtonIcon from "../base-components/button-icon";
 import Text from "../base-components/text";
+import { useInfoContext } from "../contexts/infoContext";
 import returnArrowIcon from "../icons/returnArrowIcon.svg?react";
 
 export default function Header() {
 	const navigate = useNavigate();
+	const { info } = useInfoContext();
 
 	function handleBack() {
 		navigate(-1);
@@ -34,7 +36,7 @@ export default function Header() {
 			<div>
 				<Text variant="zilla-md" className="text-white">
 					{/* automatizar isso */}
-					Inspecionando
+					{info}
 				</Text>
 			</div>
 

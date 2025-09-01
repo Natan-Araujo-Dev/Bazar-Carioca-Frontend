@@ -1,6 +1,6 @@
 import type { AxiosError } from "axios";
-import api from "../api/axios";
-import type ShopkeeperCreateDTO from "../objects/DTOs/shopkeeperCreateDTO";
+import type ShopkeeperCreateDTO from "../models/DTOs/shopkeeperCreateDTO";
+import api from "./axios";
 
 const entityRoute = "/lojistas";
 
