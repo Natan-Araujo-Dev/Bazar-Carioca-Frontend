@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import { getAccessTokenCookie } from "../cookies/userCookie";
 import type Store from "../models/store";
 
 const entityRoute = "/lojas";
@@ -16,6 +17,9 @@ export function getStoresByShopkeeperId(id?: string) {
 			try {
 				const res = await api.get<Store[]>(`${entityRoute}/lojista/${id}`, {
 					signal: controller.signal,
+					headers: {
+						Authorization: `Bearer ${getAccessTokenCookie()}`,
+					},
 				});
 				setStores(res.data);
 			} catch {

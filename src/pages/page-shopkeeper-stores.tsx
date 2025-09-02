@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Icon from "../base-components/icon";
 import Text from "../base-components/text";
 import { useInfoContext } from "../contexts/infoContext";
+import { getUserIdCookie } from "../cookies/userCookie";
 import Card from "../core-components/card";
 import { getStoresByShopkeeperId } from "../hooks/useStore";
 import AddIcon from "../icons/addIcon.svg?react";
@@ -20,10 +21,28 @@ export default function PageProduct() {
 
 	const windowsWidth = window.innerWidth;
 
+	if (id !== getUserIdCookie().toString()) {
+		return <Unhautorized />;
+	}
+
 	if (windowsWidth < 720) {
 		return <MobilePageShopkeeperStores stores={stores} />;
 	}
 	return <DesktopPageShopkeeperStores stores={stores} />;
+}
+
+function Unhautorized() {
+	return (
+		<div className="flex justify-center items-center">
+			<Text variant="inter-md">
+				Você não tem permissão para acessar as lojas desse lojista.
+				<br />
+				Caso isso volte a acontecer: entre em contato com o email do suporte
+				<br />
+				(está no fim da página)
+			</Text>
+		</div>
+	);
 }
 
 function DesktopPageShopkeeperStores({ stores }: PageProductProps) {
@@ -67,7 +86,10 @@ function MobilePageShopkeeperStores({ stores }: PageProductProps) {
 					<Text variant="zilla-md">Suas lojas:</Text>
 				</div>
 
-				<NavLink to="/lojas/criar" className="flex flex-col items-end expand mb-6">
+				<NavLink
+					to="/lojas/criar"
+					className="flex flex-col items-end expand mb-6"
+				>
 					<Icon svg={AddIcon} className="fill-blue-vivid" />
 
 					<Text variant="zilla-md" className="text-blue-vivid mr-6">
