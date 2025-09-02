@@ -4,7 +4,7 @@ import Text from "../base-components/text";
 import { useInfoContext } from "../contexts/infoContext";
 import returnArrowIcon from "../icons/returnArrowIcon.svg?react";
 
-export default function Header() {
+export default function InfoHeader() {
 	const navigate = useNavigate();
 	const { info } = useInfoContext();
 
@@ -15,12 +15,12 @@ export default function Header() {
 	return (
 		<div
 			className="
-      w-1/1
-		h-10
-      flex
-      justify-between
-		items-center
-      bg-blue-heavy"
+			w-1/1
+			h-10
+			flex
+			justify-between
+			items-center
+			bg-blue-heavy"
 			id="context"
 		>
 			<div className="h-full flex items-center">

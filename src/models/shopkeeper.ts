@@ -2,8 +2,8 @@ import type Store from "./store";
 
 export default interface Shopkeeper {
 	id: number;
-	Name: string;
-	Email: string;
-	Password?: string | null;
-	Stores: Store[] | null;
+	name: string;
+	email: string;
+	password?: string | null;
+	stores: Store[] | null;
 }

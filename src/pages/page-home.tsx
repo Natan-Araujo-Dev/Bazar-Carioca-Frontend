@@ -38,7 +38,7 @@ function DesktopPageHome({ store1, store2, store3 }: PageHomeProps) {
 
 			<div
 				className="
-				flex flex-wrap gap-4"
+				flex flex-wrap"
 			>
 				<Card store={store1} />
 

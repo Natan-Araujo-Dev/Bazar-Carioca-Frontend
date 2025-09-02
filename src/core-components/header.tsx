@@ -1,6 +1,7 @@
 import BazarCariocaButton from "../base-components/bazar-carioca-button.tsx";
-import CreateAccount from "../base-components/create-account";
-import Login from "../base-components/login.tsx";
+import ButtonCreateAccount from "../base-components/button-create-account.tsx";
+import Login from "../base-components/button-login.tsx";
+import ButtonLogin from "../base-components/button-login.tsx";
 import SearchBar from "./search-bar";
 
 export default function Header() {
@@ -28,9 +29,9 @@ function DesktopHeader() {
 			<SearchBar variant="desktop" />
 
 			<div className="flex space-x-10">
-				<CreateAccount />
+				<ButtonCreateAccount />
 
-				<Login />
+				<ButtonLogin />
 			</div>
 		</div>
 	);
@@ -51,7 +52,7 @@ function MobileHeader() {
 				<BazarCariocaButton />
 
 				<div className="flex flex-col justify-evenly items-end h-full">
-					<CreateAccount />
+					<ButtonCreateAccount />
 
 					<Login />
 				</div>

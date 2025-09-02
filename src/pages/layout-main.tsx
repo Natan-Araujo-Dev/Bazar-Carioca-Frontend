@@ -7,7 +7,7 @@ export default function LayoutMain() {
 		<div className="flex flex-col min-h-screen gap-20">
 			<Header />
 
-			<main className="flex flex-1 mx-4 items-center justify-center">
+			<main className="flex flex-1 mx-4 items-stretch justify-center py-15">
 				<Outlet />
 			</main>
 

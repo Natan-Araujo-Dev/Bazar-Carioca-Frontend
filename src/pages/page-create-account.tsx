@@ -1,17 +1,30 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addUserToShopkeeper, createAspNetUser } from "../api/endpointAuth";
-import { createShopkeeper } from "../api/endpointShopkeeper";
+import {
+	addUserToShopkeeper,
+	createAspNetUser,
+	login,
+} from "../api/endpointAuth";
+import {
+	createShopkeeper,
+	getShopkeeperByEmail,
+} from "../api/endpointShopkeeper";
 import ButtonText from "../base-components/button-text";
 import ErrorMessage from "../base-components/error-message";
 import FormularyHeader from "../base-components/formulary-header";
 import InputField from "../base-components/input-field";
 import { useInfoContext } from "../contexts/infoContext";
+import { useUserInfoContext } from "../contexts/userInfoContext";
+import { setUserIdCookie, setUserNameCookie } from "../cookies/userCookie";
+import type LoginModelDTO from "../models/DTOs/loginModelDTO";
 import type ShopkeeperCreateDTO from "../models/DTOs/shopkeeperCreateDTO";
 
-export default function PageCreate() {
+export default function PageCreateAccount() {
 	const { setInfo } = useInfoContext();
 	setInfo("Criar conta");
+
+	const { setUserLogged, setUserId, setUserName } = useUserInfoContext();
+
 	const [shopkeeperDto, setShopkeeperDTO] = useState<ShopkeeperCreateDTO>({
 		Name: "",
 		Email: "",
@@ -91,8 +104,25 @@ export default function PageCreate() {
 								setButtonMessage("Criar conta");
 							}
 
+							const loginInfo: LoginModelDTO = {
+								userEmail: shopkeeperDto.Email,
+								password: shopkeeperDto.Password,
+							};
+
 							if (sucess) {
-								navigate("/lojas/2");
+								await login(loginInfo);
+
+								const shopkeeperId = (
+									await getShopkeeperByEmail(loginInfo.userEmail)
+								).data.id;
+
+								setUserIdCookie(shopkeeperId.toString());
+								setUserNameCookie(shopkeeperDto.Name);
+								setUserLogged(true);
+								setUserId(shopkeeperId.toString());
+								setUserName(shopkeeperDto.Name);
+
+								navigate(`/lojas/lojista/${shopkeeperId}`);
 							}
 
 							setButtonMessage("Criar conta");

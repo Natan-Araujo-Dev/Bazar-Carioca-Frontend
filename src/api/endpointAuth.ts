@@ -1,5 +1,5 @@
 import type { AxiosError } from "axios";
-import { setNewToken } from "../cookies/tokenCookie";
+import { setNewTokenCookie } from "../cookies/userCookie";
 import type LoginModelDTO from "../models/DTOs/loginModelDTO";
 import type ShopkeeperCreateDTO from "../models/DTOs/shopkeeperCreateDTO";
 import type tokenDTO from "../models/DTOs/tokenDTO";
@@ -68,7 +68,7 @@ export async function login(loginDTO: LoginModelDTO) {
 		const accessToken = newToken.accessToken;
 		const refreshToken = newToken.refreshToken;
 		const expiricy = newToken.expiration;
-		setNewToken(newToken);
+		setNewTokenCookie(newToken);
 
 		return {
 			success: true,
@@ -110,7 +110,7 @@ export async function refresh(refreshToken: TokenModelDTO) {
 		const newAccessToken = newToken.accessToken;
 		const newRefreshToken = newToken.refreshToken;
 		const newExpiricy = newToken.expiration;
-		setNewToken(newToken);
+		setNewTokenCookie(newToken);
 
 		return {
 			success: true,

@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/endpointAuth";
+import { getShopkeeperByEmail } from "../api/endpointShopkeeper";
 import ButtonText from "../base-components/button-text";
 import ErrorMessage from "../base-components/error-message";
 import FormularyHeader from "../base-components/formulary-header";
 import InputField from "../base-components/input-field";
 import { useInfoContext } from "../contexts/infoContext";
+import { useUserInfoContext } from "../contexts/userInfoContext";
+import { setUserIdCookie, setUserNameCookie } from "../cookies/userCookie";
 import type LoginModelDTO from "../models/DTOs/loginModelDTO";
 
 export default function PageLogin() {
 	const { setInfo } = useInfoContext();
 	setInfo("Fazer login");
+
+	const { setUserLogged, setUserId, setUserName } = useUserInfoContext();
 
 	const [loginDTO, setLoginDTO] = useState<LoginModelDTO>({
 		userEmail: "",
@@ -79,7 +84,19 @@ export default function PageLogin() {
 							setResponse(sucess);
 
 							if (sucess) {
-								navigate("/lojas/2");
+								const shopkeeper = (
+									await getShopkeeperByEmail(loginDTO.userEmail)
+								).data;
+
+								const shopkeeperId = shopkeeper.id;
+
+								setUserIdCookie(shopkeeperId.toString());
+								setUserNameCookie(shopkeeper.name);
+								setUserLogged(true);
+								setUserId(shopkeeperId.toString());
+								setUserName(shopkeeper.name);
+
+								navigate(`/lojas/lojista/${shopkeeperId}`);
 							}
 
 							setButtonMessage("Fazer login");

@@ -1,12 +1,12 @@
 import type React from "react";
 import { createContext, useContext, useState } from "react";
 
-interface InfoContextType {
+interface InfoContextProps {
 	info: string;
 	setInfo: (info: string) => void;
 }
 
-const InfoContext = createContext<InfoContextType | undefined>(undefined);
+const InfoContext = createContext<InfoContextProps | undefined>(undefined);
 
 export function InfoProvider({ children }: { children: React.ReactNode }) {
 	const [info, setInfo] = useState("Inspecionando");
@@ -21,6 +21,6 @@ export function InfoProvider({ children }: { children: React.ReactNode }) {
 export function useInfoContext() {
 	const ctx = useContext(InfoContext);
 	if (!ctx)
-		throw new Error("useSearchContext must be used within SearchProvider");
+		throw new Error("useInfoContext must be used within SearchProvider");
 	return ctx;
 }
