@@ -1,4 +1,4 @@
-import type SearchResult from "../objects/searchResult";
+import type SearchResult from "../models/searchResultDTO";
 import SearchResultRow from "./search-result-row";
 
 interface SearchResultBoxProps {

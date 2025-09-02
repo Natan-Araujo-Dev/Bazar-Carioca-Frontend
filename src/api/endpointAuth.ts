@@ -1,9 +1,5 @@
 import type { AxiosError } from "axios";
-import {
-	getAccessToken,
-	getRefreshToken,
-	setNewToken,
-} from "../cookies/tokenCookie";
+import { setNewToken } from "../cookies/tokenCookie";
 import type LoginModelDTO from "../models/DTOs/loginModelDTO";
 import type ShopkeeperCreateDTO from "../models/DTOs/shopkeeperCreateDTO";
 import type tokenDTO from "../models/DTOs/tokenDTO";

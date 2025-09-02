@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { addUserToShopkeeper, createAspNetUser } from "../api/endpointAuth";
 import { createShopkeeper } from "../api/endpointShopkeeper";
 import ButtonText from "../base-components/button-text";
@@ -18,6 +19,8 @@ export default function PageCreate() {
 	});
 
 	const [response, setResponse] = useState(true);
+	const [buttonMessage, setButtonMessage] = useState("Criar conta");
+	const navigate = useNavigate();
 
 	return (
 		<div
@@ -41,8 +44,8 @@ export default function PageCreate() {
 				rounded-sm"
 			>
 				<InputField
-					info="Seu nome e sobrenome"
-					placeHolder="Fulano da Silva"
+					info="Nome"
+					placeHolder="Nome"
 					value={shopkeeperDto.Name}
 					onChange={(v) => setShopkeeperDTO((s) => ({ ...s, Name: v }))}
 				/>
@@ -54,33 +57,45 @@ export default function PageCreate() {
 					/>
 
 					<InputField
-						info="Seu email"
-						placeHolder="fulano@example.com"
+						info="Email"
+						placeHolder="email@example.com"
 						value={shopkeeperDto.Email}
 						onChange={(v) => setShopkeeperDTO((s) => ({ ...s, Email: v }))}
 					/>
 				</div>
 
 				<InputField
-					info="Sua senha"
-					placeHolder="123#SenhaDoFulano#321"
+					info="Senha"
+					placeHolder="Sua senha"
 					value={shopkeeperDto.Password}
 					onChange={(v) => setShopkeeperDTO((s) => ({ ...s, Password: v }))}
 				/>
 
 				<div>
 					<ButtonText
-						value="Criar conta"
+						value={buttonMessage}
 						onClick={async () => {
-							const createResponse = (await createShopkeeper(shopkeeperDto))
-								.success;
+							setButtonMessage("Carregando...");
 
-							setResponse(createResponse);
-							console.log(createResponse);
+							let sucess = false;
 
-							await createAspNetUser(shopkeeperDto);
-							await addUserToShopkeeper(shopkeeperDto);
+							try {
+								sucess = (await createShopkeeper(shopkeeperDto)).success;
 
+								setResponse(sucess);
+
+								await createAspNetUser(shopkeeperDto);
+								await addUserToShopkeeper(shopkeeperDto);
+							} catch (error) {
+								console.log(error);
+								setButtonMessage("Criar conta");
+							}
+
+							if (sucess) {
+								navigate("/lojas/2");
+							}
+
+							setButtonMessage("Criar conta");
 							// Ir para login ou lojas do lojista direto.
 						}}
 					/>

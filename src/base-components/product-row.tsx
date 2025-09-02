@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import type product from "../objects/product";
+import type product from "../models/product";
 import Text from "./text";
 
 interface ProductTypeRowProps extends React.ComponentProps<"div"> {

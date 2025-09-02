@@ -1,5 +1,5 @@
 import Text from "../base-components/text";
-import type Service from "../objects/service";
+import type Service from "../models/service";
 
 interface ServiceRowProps extends React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;
