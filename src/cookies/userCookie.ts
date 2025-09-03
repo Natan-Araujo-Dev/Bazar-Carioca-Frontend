@@ -13,6 +13,10 @@ export function resetCookies() {
 	cookies.set("userId", "", opts);
 }
 
+export function getExpirationDate(): Date | undefined {
+	return parseExpiration(getExpirationCookie());
+}
+
 function parseExpiration(exp: string | number | undefined): Date | undefined {
 	if (exp === undefined || exp === null || exp === "") return undefined;
 

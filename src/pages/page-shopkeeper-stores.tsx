@@ -21,7 +21,9 @@ export default function PageProduct() {
 
 	const windowsWidth = window.innerWidth;
 
-	if (id !== getUserIdCookie().toString()) {
+	if (id?.toString() !== getUserIdCookie().toString()) {
+		// console.log(id);
+		// console.log(getUserIdCookie());
 		return <Unhautorized />;
 	}
 
