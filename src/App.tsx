@@ -1,10 +1,15 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { refresh } from "./api/endpointAuth";
 import { useUserInfoContext } from "./contexts/userInfoContext";
 import {
 	getAccessTokenCookie,
+	getExpirationDate,
+	getRefreshTokenCookie,
 	getUserIdCookie,
 	getUserNameCookie,
 } from "./cookies/userCookie";
+import type TokenModelDTO from "./models/DTOs/tokenModelDTO";
 import LayoutInspect from "./pages/layout-inspect";
 import LayoutMain from "./pages/layout-main";
 import PageCreateAccount from "./pages/page-create-account";
@@ -16,7 +21,8 @@ import PageShopkeeperStores from "./pages/page-shopkeeper-stores";
 import PageStore from "./pages/page-store";
 
 export default function App() {
-	const { setUserLogged, setUserId, setUserName } = useUserInfoContext();
+	const { userLogged, setUserLogged, setUserId, setUserName } =
+		useUserInfoContext();
 
 	if (getAccessTokenCookie()) {
 		setUserLogged(true);
@@ -25,6 +31,45 @@ export default function App() {
 	}
 	setUserId(getUserIdCookie());
 	setUserName(getUserNameCookie());
+
+	const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+	useEffect(() => {
+		if (userLogged === false) {
+			return;
+		}
+
+		const expDate = getExpirationDate();
+		if (!expDate) return;
+
+		const tokenExpiration = expDate.getTime();
+		const agora = Date.now();
+
+		const triggerTime = tokenExpiration - 5 * 60 * 1000;
+		const delay = triggerTime - agora;
+
+		if (delay > 0) {
+			const timeout = setTimeout(() => {
+				const token: TokenModelDTO = {
+					accessToken: getAccessTokenCookie(),
+					refreshToken: getRefreshTokenCookie(),
+				};
+				refresh(token).then(() => {
+					setRefreshTrigger((v) => v + 1);
+				});
+			}, delay);
+			return () => clearTimeout(timeout);
+		} else {
+			console.log(`Token próximo/expirado após ${refreshTrigger} refreshs`);
+			const token: TokenModelDTO = {
+				accessToken: getAccessTokenCookie(),
+				refreshToken: getRefreshTokenCookie(),
+			};
+			refresh(token).then(() => {
+				setRefreshTrigger((v) => v + 1);
+			});
+		}
+	}, [userLogged, refreshTrigger]);
 
 	return (
 		<BrowserRouter>
