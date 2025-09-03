@@ -19,6 +19,7 @@ import PageLogin from "./pages/page-login";
 import PageProduct from "./pages/page-product";
 import PageShopkeeperStores from "./pages/page-shopkeeper-stores";
 import PageStore from "./pages/page-store";
+import refreshActions from "./utilities/refreshActions";
 
 export default function App() {
 	const { userLogged, setUserLogged, setUserId, setUserName } =
@@ -50,22 +51,15 @@ export default function App() {
 
 		if (delay > 0) {
 			const timeout = setTimeout(() => {
-				const token: TokenModelDTO = {
-					accessToken: getAccessTokenCookie(),
-					refreshToken: getRefreshTokenCookie(),
-				};
-				refresh(token).then(() => {
+				refreshActions().then(() => {
 					setRefreshTrigger((v) => v + 1);
 				});
 			}, delay);
 			return () => clearTimeout(timeout);
 		} else {
 			console.log(`Token próximo/expirado após ${refreshTrigger} refreshs`);
-			const token: TokenModelDTO = {
-				accessToken: getAccessTokenCookie(),
-				refreshToken: getRefreshTokenCookie(),
-			};
-			refresh(token).then(() => {
+
+			refreshActions().then(() => {
 				setRefreshTrigger((v) => v + 1);
 			});
 		}

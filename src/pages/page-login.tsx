@@ -30,23 +30,23 @@ export default function PageLogin() {
 	return (
 		<div
 			className="
-					flex flex-col
-					md:w-100
-					not-md:70
-					items-center
-					gap-y-4"
+			flex flex-col
+			md:w-100
+			not-md:70
+			items-center
+			gap-y-4"
 		>
 			<FormularyHeader text="Quer fazer login? Preencha o formulário:" />
 
 			<div
 				className="
-						flex flex-col
-						items-center
-						w-full
-						p-5
-						gap-y-6
-						border-2 border-blue-heavy
-						rounded-sm"
+				flex flex-col
+				items-center
+				w-full
+				p-5
+				gap-y-6
+				border-2 border-blue-heavy
+				rounded-sm"
 			>
 				<div className="flex flex-col w-full">
 					<ErrorMessage
