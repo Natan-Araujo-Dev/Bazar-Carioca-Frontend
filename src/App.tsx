@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { refresh } from "./api/endpointAuth";
 import { useUserInfoContext } from "./contexts/userInfoContext";
 import {
 	getAccessTokenCookie,
 	getExpirationDate,
-	getRefreshTokenCookie,
 	getUserIdCookie,
 	getUserNameCookie,
 } from "./cookies/userCookie";
-import type TokenModelDTO from "./models/DTOs/tokenModelDTO";
 import LayoutInspect from "./pages/layout-inspect";
 import LayoutMain from "./pages/layout-main";
 import PageCreateAccount from "./pages/page-create-account";
