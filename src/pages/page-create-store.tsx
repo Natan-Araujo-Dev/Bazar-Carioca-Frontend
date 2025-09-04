@@ -29,6 +29,17 @@ export default function PageCreateStore() {
 		closingTimeMinute: "",
 	});
 
+	const windowsWidth = window.innerWidth;
+
+	if (windowsWidth < 720) {
+		return (
+			<PageCreateStoreMobile
+				createStoreDTO={createStoreDTO}
+				setCreateStoreDTO={setCreateStoreDTO}
+			/>
+		);
+	}
+
 	return (
 		<PageCreateStoreDesktop
 			createStoreDTO={createStoreDTO}
@@ -210,6 +221,210 @@ function PageCreateStoreDesktop({
 				</div>
 			</div>
 
+			<div className="flex justify-center mt-20">
+				<ButtonText
+					value={message}
+					onClick={() => {
+						setMessage("Carregando.");
+
+						if (
+							createStoreDTO.name !== "" &&
+							createStoreDTO.description !== "" &&
+							createStoreDTO.cellphoneNumber !== "" &&
+							createStoreDTO.neighborhood !== "" &&
+							createStoreDTO.street !== "" &&
+							createStoreDTO.number !== "" &&
+							createStoreDTO.openingTimeHour !== "" &&
+							createStoreDTO.openingTimeMinute !== "" &&
+							createStoreDTO.closingTimeHour !== "" &&
+							createStoreDTO.closingTimeMinute !== ""
+						) {
+							try {
+								createStore(createStoreDTO);
+								navigate(`/lojas/lojista/${getUserIdCookie()}`);
+							} catch (error) {
+								setMessage("Houve um erro.");
+								console.log(error);
+							}
+						} else {
+							setMessage("Informações vazias.");
+						}
+					}}
+				/>
+			</div>
+		</div>
+	);
+}
+
+function PageCreateStoreMobile({
+	createStoreDTO,
+	setCreateStoreDTO,
+}: {
+	createStoreDTO: CreateStoreDTO;
+	setCreateStoreDTO: Dispatch<SetStateAction<CreateStoreDTO>>;
+}) {
+	const navigate = useNavigate();
+
+	const [message, setMessage] = React.useState("Criar loja");
+
+	return (
+		<div className="flex flex-col gap-y-2">
+			{/* Nome */}
+			<div>
+				<InputFieldSpan
+					className="w-full h-7"
+					placeHolder="Nome da sua loja"
+					value={createStoreDTO.name}
+					onChange={(v) => setCreateStoreDTO((s) => ({ ...s, name: v }))}
+				/>
+			</div>
+
+			{/* Horário de funcionamento */}
+			<div className="flex">
+				<Text className="text-blue-medium flex items-center gap-1">
+					Horário de funcionamento: de
+					<Text variant="inter-md" className="text-black">
+						<InputFieldSpan
+							className="w-7 h-4"
+							placeHolder="00"
+							value={createStoreDTO.openingTimeHour}
+							onChange={(v) =>
+								setCreateStoreDTO((s) => ({ ...s, openingTimeHour: v }))
+							}
+						/>
+					</Text>
+					{":"}
+					<Text variant="inter-md" className="text-black">
+						<InputFieldSpan
+							className="w-7 h-4"
+							placeHolder="00"
+							value={createStoreDTO.openingTimeMinute}
+							onChange={(v) =>
+								setCreateStoreDTO((s) => ({ ...s, openingTimeMinute: v }))
+							}
+						/>
+					</Text>
+					{" até "}
+					<Text variant="inter-md" className="text-black">
+						<InputFieldSpan
+							className="w-7 h-4"
+							placeHolder="00"
+							value={createStoreDTO.closingTimeHour}
+							onChange={(v) =>
+								setCreateStoreDTO((s) => ({ ...s, closingTimeHour: v }))
+							}
+						/>
+					</Text>
+					{":"}
+					<Text variant="inter-md" className="text-black">
+						<InputFieldSpan
+							className="w-7 h-4"
+							placeHolder="00"
+							value={createStoreDTO.closingTimeMinute}
+							onChange={(v) =>
+								setCreateStoreDTO((s) => ({ ...s, closingTimeMinute: v }))
+							}
+						/>
+					</Text>
+				</Text>
+			</div>
+
+			{/* Imagem e descrição*/}
+			<div className="flex flex-row gap-x-2">
+				{/* Imagem */}
+				<div
+					className="
+					flex h-40 w-40
+					bg-blue-extralight
+					justify-center items-center
+					rounded-sm"
+				>
+					<label className="cursor-pointer w-full h-full">
+						<input
+							type="file"
+							accept="image/*"
+							className="hidden"
+							onChange={(e) =>
+								setCreateStoreDTO((s) => ({
+									...s,
+									file: e.target.files ? e.target.files[0] : null,
+								}))
+							}
+						/>
+
+						<img
+							className="flex object-cover w-full h-full rounded-md shadow-md"
+							src={
+								createStoreDTO.file
+									? URL.createObjectURL(createStoreDTO.file)
+									: ImageNotFound
+							}
+							alt="imagem"
+						/>
+					</label>
+				</div>
+
+				{/* descrição */}
+				<div className="flex w-50 items-end">
+					<InputFieldSpan
+						className="h-full w-full"
+						placeHolder="Descrição"
+						value={createStoreDTO.description}
+						onChange={(v) =>
+							setCreateStoreDTO((s) => ({ ...s, description: v }))
+						}
+					/>
+				</div>
+			</div>
+
+			{/* Endereço */}
+			<div className="flex max-w-50">
+				<Text className="text-[10px]">
+					<Text className="text-[15px]">Endereço:</Text>
+					<br />
+					<InputFieldSpan
+						className="max-w-48 w-full"
+						placeHolder="Rua"
+						value={createStoreDTO.street}
+						onChange={(v) => setCreateStoreDTO((s) => ({ ...s, street: v }))}
+					/>{" "}
+					{" ,"}
+					<InputFieldSpan
+						className="max-w-14 w-full h-4"
+						placeHolder="Número"
+						value={createStoreDTO.number}
+						onChange={(v) => setCreateStoreDTO((s) => ({ ...s, number: v }))}
+					/>
+					<Text className="text-[15px]">{" -"}</Text>
+					<InputFieldSpan
+						className="max-w-48 w-full"
+						placeHolder="Bairro"
+						value={createStoreDTO.neighborhood}
+						onChange={(v) =>
+							setCreateStoreDTO((s) => ({ ...s, neighborhood: v }))
+						}
+					/>
+					{" , Rio de Janeiro - RJ"}
+				</Text>
+			</div>
+
+			{/* celular */}
+			<div className="flex items-center">
+				<Text className="text-[10px]">
+					<Text className="text-[15px]">Celular:</Text> <br />
+					<Text className="text-[15px]">{"21 "}</Text>
+					<InputFieldSpan
+						className="w-fit h-4"
+						placeHolder="Número de celular"
+						value={createStoreDTO.cellphoneNumber}
+						onChange={(v) =>
+							setCreateStoreDTO((s) => ({ ...s, cellphoneNumber: v }))
+						}
+					/>
+				</Text>
+			</div>
+
+			{/* botão */}
 			<div className="flex justify-center mt-20">
 				<ButtonText
 					value={message}

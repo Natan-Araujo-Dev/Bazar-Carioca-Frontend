@@ -19,11 +19,11 @@ export default function PageProduct() {
 	const { setInfo } = useInfoContext();
 	setInfo("Inspecionando suas lojas");
 
-	const windowsWidth = window.innerWidth;
-
 	if (id?.toString() !== getUserIdCookie().toString()) {
 		return <Unhautorized />;
 	}
+
+	const windowsWidth = window.innerWidth;
 
 	if (windowsWidth < 720) {
 		return <MobilePageShopkeeperStores stores={stores} />;
