@@ -27,7 +27,13 @@ export default function StoreChildren({
 	if (!isEditing) {
 	}
 
-	const isOwner = storeShopkeeperId === getUserIdCookie().toString();
+	let isOwner = false;
+	const userId = getUserIdCookie();
+
+	console.log(userId);
+	if (userId !== null && userId!== undefined) {
+		isOwner = storeShopkeeperId === userId.toString();
+	}
 
 	return (
 		<div className="flex flex-col gap-y-4">
