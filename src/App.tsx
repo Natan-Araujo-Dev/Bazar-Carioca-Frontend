@@ -10,6 +10,7 @@ import {
 import LayoutInspect from "./pages/layout-inspect";
 import LayoutMain from "./pages/layout-main";
 import PageCreateAccount from "./pages/page-create-account";
+import PageCreateService from "./pages/page-create-service";
 import PageCreateStore from "./pages/page-create-store";
 import PageHome from "./pages/page-home";
 import PageLogin from "./pages/page-login";
@@ -46,6 +47,10 @@ export default function App() {
 		const triggerTime = tokenExpiration - 5 * 60 * 1000;
 		const delay = triggerTime - agora;
 
+		console.log(delay);
+		console.log(tokenExpiration);
+		console.log(refreshTrigger);
+
 		if (delay > 0) {
 			const timeout = setTimeout(() => {
 				refreshActions().then(() => {
@@ -54,13 +59,15 @@ export default function App() {
 			}, delay);
 			return () => clearTimeout(timeout);
 		} else {
-			console.log(`Token próximo/expirado após ${refreshTrigger} refreshs`);
-
 			refreshActions().then(() => {
 				setRefreshTrigger((v) => v + 1);
 			});
 		}
-	}, [userLogged, refreshTrigger]);
+
+		console.log(delay);
+		console.log(tokenExpiration);
+		console.log(refreshTrigger);
+	}, [refreshTrigger, userLogged]);
 
 	return (
 		<BrowserRouter>
@@ -81,6 +88,11 @@ export default function App() {
 					<Route path="/lojas/lojista/:id" element={<PageShopkeeperStores />} />
 
 					<Route path="/lojas/criar" element={<PageCreateStore />} />
+
+					<Route
+						path="/lojas/:id/criar/servico"
+						element={<PageCreateService />}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>

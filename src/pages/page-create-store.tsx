@@ -224,7 +224,7 @@ function PageCreateStoreDesktop({
 			<div className="flex justify-center mt-20">
 				<ButtonText
 					value={message}
-					onClick={() => {
+					onClick={async () => {
 						setMessage("Carregando.");
 
 						if (
@@ -240,7 +240,7 @@ function PageCreateStoreDesktop({
 							createStoreDTO.closingTimeMinute !== ""
 						) {
 							try {
-								createStore(createStoreDTO);
+								await createStore(createStoreDTO);
 								navigate(`/lojas/lojista/${getUserIdCookie()}`);
 							} catch (error) {
 								setMessage("Houve um erro.");
@@ -428,7 +428,7 @@ function PageCreateStoreMobile({
 			<div className="flex justify-center mt-20">
 				<ButtonText
 					value={message}
-					onClick={() => {
+					onClick={async () => {
 						setMessage("Carregando.");
 
 						if (
@@ -444,7 +444,7 @@ function PageCreateStoreMobile({
 							createStoreDTO.closingTimeMinute !== ""
 						) {
 							try {
-								createStore(createStoreDTO);
+								await createStore(createStoreDTO);
 								navigate(`/lojas/lojista/${getUserIdCookie()}`);
 							} catch (error) {
 								setMessage("Houve um erro.");

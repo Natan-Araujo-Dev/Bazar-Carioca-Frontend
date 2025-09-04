@@ -10,7 +10,14 @@ import {
 import type TokenModelDTO from "../models/DTOs/tokenModelDTO";
 
 export default async function refreshActions() {
-	const { setUserLogged, setUserId, setUserName } = useUserInfoContext();
+	const {
+		userLogged,
+		userId,
+		userName,
+		setUserLogged,
+		setUserId,
+		setUserName,
+	} = useUserInfoContext();
 
 	const token: TokenModelDTO = {
 		accessToken: getAccessTokenCookie(),
@@ -26,4 +33,13 @@ export default async function refreshActions() {
 	// cookie [ userId, userName ]
 	setUserIdCookie(getUserIdCookie());
 	setUserName(getUserNameCookie());
+
+	console.log("Context");
+	console.log("UserLogged: " + userLogged);
+	console.log("UserId: " + userId);
+	console.log("UserName: " + userName);
+
+	console.log("Cookie");
+	console.log("UserId: " + getUserIdCookie());
+	console.log("UserName: " + getUserNameCookie());
 }

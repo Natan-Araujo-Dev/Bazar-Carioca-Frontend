@@ -24,6 +24,7 @@ export default function PageStore() {
 			<StoreInfo store={store} isEditing={false} />
 
 			<StoreChildren
+				storeId={id ?? "0"}
 				services={services}
 				productTypes={productTypes}
 				isEditing={false}

@@ -10,7 +10,7 @@ export default function LayoutInspect() {
 
 			<Context />
 
-			<main className="flex flex-1 mx-4 items-stretch justify-center py-15">
+			<main className="flex flex-1 mx-4 justify-center items-center py-15">
 				<Outlet />
 			</main>
 
