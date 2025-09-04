@@ -7,11 +7,15 @@ import Text from "../base-components/text";
 import { getUserIdCookie } from "../cookies/userCookie";
 import { getStoreById } from "../hooks/useStore";
 import type CreateProductTypeDTO from "../models/DTOs/createProductTypeDTO";
+import { useInfoContext } from "../contexts/infoContext";
 
 export default function PageCreateProductType() {
 	const { id } = useParams();
 
 	const navigate = useNavigate();
+
+	const { setInfo } = useInfoContext();
+	setInfo(`Criando tipo de produto`);
 
 	const [productTypeDTO, setProductTypeDTO] = useState<CreateProductTypeDTO>({
 		storeId: id ?? "",

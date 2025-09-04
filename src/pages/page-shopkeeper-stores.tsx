@@ -64,7 +64,7 @@ function DesktopPageShopkeeperStores({ stores }: PageProductProps) {
 				</div>
 			</div>
 
-			<div className="flex flex-row w-full h-full justify-center items-center">
+			<div className="flex flex-row w-full h-full flex-wrap justify-center items-center">
 				{!stores ? (
 					<Text variant="zilla-md">
 						Nenhuma loja foi encontrada. Para adicionar uma loja, basta clicar

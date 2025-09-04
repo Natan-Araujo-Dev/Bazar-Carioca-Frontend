@@ -4,6 +4,7 @@ import { createService } from "../api/endpointService";
 import ButtonText from "../base-components/button-text";
 import InputField from "../base-components/input-field";
 import Text from "../base-components/text";
+import { useInfoContext } from "../contexts/infoContext";
 import { getUserIdCookie } from "../cookies/userCookie";
 import { getStoreById } from "../hooks/useStore";
 import type CreateServiceDTO from "../models/DTOs/CreateServiceDTO";
@@ -12,6 +13,9 @@ export default function PageCreateService() {
 	const { id } = useParams();
 
 	const navigate = useNavigate();
+
+	const { setInfo } = useInfoContext();
+	setInfo(`Criando serviço`);
 
 	const [serviceDTO, setServiceDTO] = useState<CreateServiceDTO>({
 		storeId: id ?? "",
@@ -77,8 +81,6 @@ export default function PageCreateService() {
 						} else {
 							setButtonMessage("Preencha tudo");
 						}
-
-						setButtonMessage("Criar serviço");
 					}}
 				/>
 			</div>

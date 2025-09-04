@@ -30,8 +30,7 @@ export default function StoreChildren({
 	let isOwner = false;
 	const userId = getUserIdCookie();
 
-	console.log(userId);
-	if (userId !== null && userId!== undefined) {
+	if (userId !== null && userId !== undefined) {
 		isOwner = storeShopkeeperId === userId.toString();
 	}
 
@@ -65,7 +64,7 @@ export default function StoreChildren({
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">
-					<ProductTypesList productTypes={productTypes} />
+					<ProductTypesList storeShopkeeperId={storeShopkeeperId} productTypes={productTypes} />
 				</div>
 			</div>
 		</div>

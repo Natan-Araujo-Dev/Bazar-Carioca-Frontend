@@ -10,6 +10,7 @@ import {
 import LayoutInspect from "./pages/layout-inspect";
 import LayoutMain from "./pages/layout-main";
 import PageCreateAccount from "./pages/page-create-account";
+import PageCreateProductType from "./pages/page-create-product-type";
 import PageCreateService from "./pages/page-create-service";
 import PageCreateStore from "./pages/page-create-store";
 import PageHome from "./pages/page-home";
@@ -18,7 +19,7 @@ import PageProduct from "./pages/page-product";
 import PageShopkeeperStores from "./pages/page-shopkeeper-stores";
 import PageStore from "./pages/page-store";
 import refreshActions from "./utilities/refreshActions";
-import PageCreateProductType from "./pages/page-create-product-type";
+import PageCreateProduct from "./pages/page-create-product";
 
 export default function App() {
 	const { userLogged, setUserLogged, setUserId, setUserName } =
@@ -98,6 +99,11 @@ export default function App() {
 					<Route
 						path="/lojas/:id/criar/tipo-de-produto"
 						element={<PageCreateProductType />}
+					/>
+
+					<Route
+						path="/tipo-de-produto/:id/criar"
+						element={<PageCreateProduct />}
 					/>
 				</Route>
 			</Routes>

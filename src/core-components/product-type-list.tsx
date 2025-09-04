@@ -5,22 +5,31 @@ import type productType from "../models/productType";
 
 interface productTypeProps extends React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;
+	storeShopkeeperId: string;
 	productTypes?: productType[] | null;
 }
 
-export default function ProductTypesList({ productTypes }: productTypeProps) {
-	if (!productTypes)
+export default function ProductTypesList({
+	storeShopkeeperId,
+	productTypes,
+}: productTypeProps) {
+	if (!productTypes) {
 		return (
 			<div>
 				<Text variant="inter-md">Nenhum produto encontrado</Text>
 			</div>
 		);
+	}
 
 	return (
 		<div>
 			{productTypes?.map((pt) => (
 				<div key={pt.id}>
-					<ProductTypeRow name={pt.name} />
+					<ProductTypeRow
+						storeShopkeeperId={storeShopkeeperId}
+						productTypeId={pt.id.toString()}
+						productTypeName={pt.name}
+					/>
 
 					{pt.products.length === 0 && (
 						<div className="">
