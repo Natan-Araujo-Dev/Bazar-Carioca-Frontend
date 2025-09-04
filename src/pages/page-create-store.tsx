@@ -227,27 +227,15 @@ function PageCreateStoreDesktop({
 					onClick={async () => {
 						setMessage("Carregando.");
 
-						if (
-							createStoreDTO.name !== "" &&
-							createStoreDTO.description !== "" &&
-							createStoreDTO.cellphoneNumber !== "" &&
-							createStoreDTO.neighborhood !== "" &&
-							createStoreDTO.street !== "" &&
-							createStoreDTO.number !== "" &&
-							createStoreDTO.openingTimeHour !== "" &&
-							createStoreDTO.openingTimeMinute !== "" &&
-							createStoreDTO.closingTimeHour !== "" &&
-							createStoreDTO.closingTimeMinute !== ""
-						) {
-							try {
-								await createStore(createStoreDTO);
+						if (storeIsValid(createStoreDTO)) {
+							const sucess = (await createStore(createStoreDTO)).success;
+
+							if (sucess) {
+								setMessage("Loja criada");
 								navigate(`/lojas/lojista/${getUserIdCookie()}`);
-							} catch (error) {
-								setMessage("Houve um erro.");
-								console.log(error);
 							}
 						} else {
-							setMessage("Informações vazias.");
+							setMessage("Preencha tudo");
 						}
 					}}
 				/>
@@ -431,31 +419,38 @@ function PageCreateStoreMobile({
 					onClick={async () => {
 						setMessage("Carregando.");
 
-						if (
-							createStoreDTO.name !== "" &&
-							createStoreDTO.description !== "" &&
-							createStoreDTO.cellphoneNumber !== "" &&
-							createStoreDTO.neighborhood !== "" &&
-							createStoreDTO.street !== "" &&
-							createStoreDTO.number !== "" &&
-							createStoreDTO.openingTimeHour !== "" &&
-							createStoreDTO.openingTimeMinute !== "" &&
-							createStoreDTO.closingTimeHour !== "" &&
-							createStoreDTO.closingTimeMinute !== ""
-						) {
-							try {
-								await createStore(createStoreDTO);
+						if (storeIsValid(createStoreDTO)) {
+							const sucess = (await createStore(createStoreDTO)).success;
+
+							if (sucess) {
+								setMessage("Loja criada");
 								navigate(`/lojas/lojista/${getUserIdCookie()}`);
-							} catch (error) {
-								setMessage("Houve um erro.");
-								console.log(error);
 							}
 						} else {
-							setMessage("Informações vazias.");
+							setMessage("Preencha tudo");
 						}
 					}}
 				/>
 			</div>
 		</div>
 	);
+}
+
+function storeIsValid(createStoreDTO: CreateStoreDTO) {
+	if (
+		createStoreDTO.name !== "" &&
+		createStoreDTO.description !== "" &&
+		createStoreDTO.cellphoneNumber !== "" &&
+		createStoreDTO.neighborhood !== "" &&
+		createStoreDTO.street !== "" &&
+		createStoreDTO.number !== "" &&
+		createStoreDTO.openingTimeHour !== "" &&
+		createStoreDTO.openingTimeMinute !== "" &&
+		createStoreDTO.closingTimeHour !== "" &&
+		createStoreDTO.closingTimeMinute !== ""
+	) {
+		return true;
+	}
+
+	return false;
 }

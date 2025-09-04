@@ -4,11 +4,11 @@ import StoreChildren from "../core-components/store-children";
 import StoreInfo from "../core-components/store-info";
 import { getProductTypeByStoreId } from "../hooks/useProductType";
 import { getServicesByStoreId } from "../hooks/useService";
-import { getStores } from "../hooks/useStore";
+import { getStoreById } from "../hooks/useStore";
 
 export default function PageStore() {
 	const { id } = useParams<{ id: string }>();
-	const store = getStores(id);
+	const store = getStoreById(id);
 	const services = getServicesByStoreId(id);
 	const productTypes = getProductTypeByStoreId(id, true);
 
@@ -24,6 +24,7 @@ export default function PageStore() {
 			<StoreInfo store={store} isEditing={false} />
 
 			<StoreChildren
+				storeShopkeeperId={store.shopkeeperId.toString()}
 				storeId={id ?? "0"}
 				services={services}
 				productTypes={productTypes}

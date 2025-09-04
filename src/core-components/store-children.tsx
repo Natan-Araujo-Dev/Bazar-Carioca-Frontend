@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Icon from "../base-components/icon";
 import Text from "../base-components/text";
+import { getUserIdCookie } from "../cookies/userCookie";
 import AddIcon from "../icons/addIcon.svg?react";
 import type ProductType from "../models/productType";
 import type Service from "../models/service";
@@ -9,6 +10,7 @@ import ServicesList from "./services-list";
 
 interface StoreChildrenProps extends React.ComponentProps<"div"> {
 	as?: keyof React.JSX.IntrinsicElements;
+	storeShopkeeperId: string;
 	storeId: string;
 	services?: Service[] | null;
 	productTypes?: ProductType[] | null;
@@ -16,6 +18,7 @@ interface StoreChildrenProps extends React.ComponentProps<"div"> {
 }
 
 export default function StoreChildren({
+	storeShopkeeperId,
 	storeId,
 	services,
 	productTypes,
@@ -24,18 +27,19 @@ export default function StoreChildren({
 	if (!isEditing) {
 	}
 
+	const isOwner = storeShopkeeperId === getUserIdCookie().toString();
+
 	return (
 		<div className="flex flex-col gap-y-4">
 			<div>
 				<div className="flex flex-row">
 					<Text variant="zilla-lg">Serviços</Text>
 
-					{
-						//é o dono? então:
+					{isOwner && (
 						<NavLink to={`/lojas/${storeId}/criar/servico`}>
 							<Icon svg={AddIcon} className="fill-blue-vivid" />
 						</NavLink>
-					}
+					)}
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">
@@ -47,11 +51,11 @@ export default function StoreChildren({
 				<div className="flex flex-row">
 					<Text variant="zilla-lg">Produtos</Text>
 
-					{/* <ButtonIcon
-						icon={ExpandIcon}
-						variant="black"
-						className="rounded-md"
-					/> */}
+					{isOwner && (
+						<NavLink to={`/lojas/${storeId}/criar/tipo-de-produto`}>
+							<Icon svg={AddIcon} className="fill-blue-vivid" />
+						</NavLink>
+					)}
 				</div>
 
 				<div className="rounded-b-lg bg-blue-extralight px-2 py-1">

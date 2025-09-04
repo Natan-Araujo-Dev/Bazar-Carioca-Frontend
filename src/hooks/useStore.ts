@@ -35,7 +35,7 @@ export function getStoresByShopkeeperId(id?: string) {
 	return stores;
 }
 
-export function getStores(id?: string) {
+export function getStoreById(id?: string) {
 	const [store, setStore] = useState<Store | null>(null);
 
 	useEffect(() => {

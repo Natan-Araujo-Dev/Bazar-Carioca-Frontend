@@ -1,6 +1,6 @@
 import Text from "../base-components/text";
 import Card from "../core-components/card";
-import { getStores } from "../hooks/useStore";
+import { getStoreById } from "../hooks/useStore";
 import type Store from "../models/store";
 
 interface PageHomeProps extends React.ComponentProps<"div"> {
@@ -10,9 +10,9 @@ interface PageHomeProps extends React.ComponentProps<"div"> {
 }
 
 export default function PageHome() {
-	const store1 = getStores("2");
-	const store2 = getStores("5");
-	const store3 = getStores("6");
+	const store1 = getStoreById("2");
+	const store2 = getStoreById("5");
+	const store3 = getStoreById("6");
 
 	const widowWidth = window.innerWidth;
 

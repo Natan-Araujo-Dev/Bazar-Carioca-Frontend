@@ -18,6 +18,7 @@ import PageProduct from "./pages/page-product";
 import PageShopkeeperStores from "./pages/page-shopkeeper-stores";
 import PageStore from "./pages/page-store";
 import refreshActions from "./utilities/refreshActions";
+import PageCreateProductType from "./pages/page-create-product-type";
 
 export default function App() {
 	const { userLogged, setUserLogged, setUserId, setUserName } =
@@ -92,6 +93,11 @@ export default function App() {
 					<Route
 						path="/lojas/:id/criar/servico"
 						element={<PageCreateService />}
+					/>
+
+					<Route
+						path="/lojas/:id/criar/tipo-de-produto"
+						element={<PageCreateProductType />}
 					/>
 				</Route>
 			</Routes>

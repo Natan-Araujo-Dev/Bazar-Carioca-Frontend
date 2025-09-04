@@ -4,6 +4,8 @@ import { createService } from "../api/endpointService";
 import ButtonText from "../base-components/button-text";
 import InputField from "../base-components/input-field";
 import Text from "../base-components/text";
+import { getUserIdCookie } from "../cookies/userCookie";
+import { getStoreById } from "../hooks/useStore";
 import type CreateServiceDTO from "../models/DTOs/CreateServiceDTO";
 
 export default function PageCreateService() {
@@ -17,18 +19,13 @@ export default function PageCreateService() {
 		averagePrice: "",
 	});
 
-	function serviceIsValid() {
-		if (
-			serviceDTO.name.trim() === "" ||
-			serviceDTO.averagePrice.trim() === "" ||
-			Number.isNaN(Number(serviceDTO.averagePrice))
-		) {
-			return false;
-		}
-		return true;
-	}
-
 	const [buttonMessage, setButtonMessage] = useState("Criar serviço");
+
+	const isOwner = getUserIdCookie() === getStoreById(id)?.shopkeeperId;
+
+	if (!isOwner) {
+		return <div>Você não pode criar serviços para essa loja.</div>;
+	}
 
 	return (
 		<div
@@ -69,16 +66,16 @@ export default function PageCreateService() {
 					onClick={async () => {
 						setButtonMessage("Carregando");
 
-						if (serviceIsValid()) {
-							console.log("criou");
+						if (serviceIsValid(serviceDTO)) {
+							const sucess = (await createService(serviceDTO)).success;
 
-							await createService(serviceDTO);
-
-							navigate(`/lojas/${id}`);
-
-							return;
+							if (sucess) {
+								navigate(`/lojas/${id}`);
+							} else {
+								setButtonMessage("Houve um erro.");
+							}
 						} else {
-							console.log("NÃO criou");
+							setButtonMessage("Preencha tudo");
 						}
 
 						setButtonMessage("Criar serviço");
@@ -87,4 +84,15 @@ export default function PageCreateService() {
 			</div>
 		</div>
 	);
+}
+
+function serviceIsValid(serviceDTO: CreateServiceDTO) {
+	if (
+		serviceDTO.name.trim() === "" ||
+		serviceDTO.averagePrice.trim() === "" ||
+		Number.isNaN(Number(serviceDTO.averagePrice))
+	) {
+		return false;
+	}
+	return true;
 }
